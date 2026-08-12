@@ -1,4 +1,4 @@
-.dessert-container {
+.sweets-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -6,7 +6,7 @@
   gap: 40px;
 }
 
-.dessert-category-list {
+.sweets-category-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,7 +14,7 @@
 /* ??????????????????? */  
 }
 
-.dessert-list {
+.sweets-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -22,7 +22,7 @@
   gap: 32px;
 }
 
-.dessert-item {
+.sweets-item {
   border: 1px solid var(--color-scheme-1-border);
   border-radius: 16px;
   padding: 16px;
@@ -34,55 +34,55 @@
   background-color: var(--color-scheme-1-foreground);
 }
 
-.dessert-load-more-button {
+.sweets-load-more-button {
   width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
-  .dessert-title-wrapper {
+  .sweets-title-wrapper {
     align-items: flex-start;
     gap: 8px;
   }
 
-  .dessert-title {
+  .sweets-title {
     text-align: left;
   }
 
-  .dessert-title-text {
+  .sweets-title-text {
     text-align: left;
   }
 
-  .dessert-list {
+  .sweets-list {
     flex-direction: row;
     align-items: flex-start;
     column-gap: 16px;
     flex-wrap: wrap;
   }
 
-  .dessert-item {
+  .sweets-item {
     flex-basis: calc((100% - 16px) / 2);
   }
 
-  .dessert-load-more-button {
+  .sweets-load-more-button {
     max-width: 344px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .dessert-title-wrapper {
+  .sweets-title-wrapper {
     align-items: center;
     gap: 24px;
   }
 
-  .dessert-title {
+  .sweets-title {
     text-align: center;
   }
 
-  .dessert-title-text {
+  .sweets-title-text {
     text-align: center;
   }
 
-  .dessert-category-list {
+  .sweets-category-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -90,19 +90,19 @@
     gap: 24px 32px;
   }
 
-  .dessert-category-item {
+  .sweets-category-item {
     flex-basis: calc((100% - 5 * 24px) / 6);
   }
 
-  .dessert-list {
+  .sweets-list {
     gap: 40px 24px;
   }
 
-  .dessert-item {
+  .sweets-item {
     flex-basis: calc((100% - 3 * 24px) / 4);
   }
 
-  .dessert-load-more-button {
+  .sweets-load-more-button {
     max-width: 198px;
   }
 }
