@@ -16,7 +16,112 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+/*.faq-list,*/
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+/*.faq-item,*/
+.accordion-container .ac {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  border: none;
+  border-top: 2px solid var(--color-scheme-1-border);
+  background-color: transparent;
+}   
+
+/*.faq-list .faq-item:last-child,*/
+.accordion-container .ac:last-child {
+  border-bottom: 2px solid var(--color-scheme-1-border);
+}
+
+/*.faq-subtitle,*/
+.accordion-container .ac .ac-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/*.faq-button,*/
+.accordion-container .ac .ac-trigger {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* space-between */
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 0;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+}
+/*
+.faq-button:focus,
+.accordion-container .ac .ac-trigger:focus {
+  color: var(--color-scheme-1-text);
+}
+*/
+
+.accordion-container .ac .ac-trigger::after {
+  display: none;
+}
+
+/*.faq-button span,*/
+.accordion-container .ac .ac-trigger span {
+  display: block;
+}
+
+.faq-icon {
+  fill: var(--color-scheme-1-text);
+  stroke-width: 1px;
+  stroke: var(--color-scheme-1-text);
+  min-width: 32px;
+  max-width: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  margin-left: auto;
+  transition: transform var(--transition-300);
+}
+
+/*.faq-item.is-active .faq-icon,*/
+.accordion-container .ac.is-active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/*.faq-text,*/
+.accordion-container .ac .ac-panel .ac-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  text-align: left;
+  padding: 0 0 24px;
+  width: 100%;
+  transition: max-height var(--transition-300);
+}
+
+@media screen and (min-width: 768px) {
+/*  .faq-button,*/
+  .accordion-container .ac .ac-trigger {
+    padding: 22.5px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .faq-container {
     gap: 80px;
   }
