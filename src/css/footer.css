@@ -1,0 +1,130 @@
+.footer {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  z-index: 0;
+  background: var(--color-scheme-3-background);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.footer-logo-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-nav-link {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-scheme-3-text);
+}
+
+.footer-social-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.footer-social-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-scheme-3-text);
+}
+
+.footer-credits {
+  padding: 32px 0 0;
+  border-top: 2px solid var(--color-scheme-3-border);
+  width: 100%;
+}
+
+.footer-credits-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  text-wrap: nowrap;
+  color: var(--color-scheme-3-text);
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-nav-list {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo-link {
+    align-items: flex-start;
+    width: 430px;
+  }
+
+  .footer-logo-icon {
+    width: 309.5px;
+    height: 132.64px;    
+  }
+  .footer-nav-link {
+    font-size: 14px;
+  }
+
+  .footer-social-list {
+    justify-content: flex-end;
+    width: 430px;
+  }
+
+  .footer-social-link {
+    width: 24px;
+    height: 24px;
+  }
+}
