@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Солодка майстерня</title>
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-e2FnNTKt.css">
+    <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-Cb7VvBBu.js">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BfPs2Zf6.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-CbaZXPZ2.css">
   </head>
   <body>
     <header class="header">
@@ -35,7 +37,7 @@
         <a href="#sweets" class="button-primary-small header-order-button">До покупок</a>
         <button class="header-mobile-menu-button" type="button" data-mobile-menu-open>
           <svg class="header-mobile-menu-icon">
-            <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#menu"></use>
+            <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#menu"></use>
           </svg>
         </button>
       </nav>
@@ -98,7 +100,23 @@
       <h2 class="faq-title">Часті питання</h2>
       <p class="faq-title-text"></p>
     </div>
-    <div class="accordion-container"></div>
+    <ul class="accordion-container faq-list">
+<!--      
+      <li class="ac faq-item">
+        <h3 class="ac-header faq-subtitle">
+          <button class="ac-trigger faq-button" type="button">
+            <span></span>
+            <svg class="faq-icon">
+              <use href="./img/icons.svg#keyboard-arrow-down"></use>
+            </svg>
+          </button>
+        </h3>
+        <div class="ac-panel faq-panel">
+          <p class="ac-text faq-text"></p>
+        </div>
+      </li>
+    -->
+    </ul>
   </div>
 </section>
     </main>
@@ -129,21 +147,21 @@
         <li class="footer-social-item">
           <a class="footer-social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg class="footer-social-icon social-icon">
-              <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#facebook"></use>
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#facebook"></use>
             </svg>
           </a>
         </li>
         <li class="footer-social-item">
           <a class="footer-social-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg class="footer-social-icon social-icon">
-              <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#instagram"></use>
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#instagram"></use>
             </svg>
           </a>
         </li>
         <li class="footer-social-item">
           <a class="footer-social-link" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <svg class="footer-social-icon social-icon">
-              <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#youtube"></use>
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#youtube"></use>
             </svg>
           </a>
         </li>
@@ -167,7 +185,7 @@
           </a>
           <button class="mobile-menu-close-button" type="button" data-mobile-menu-close>
             <svg class="mobile-menu-close-button-icon">
-              <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#close"></use>
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#close"></use>
             </svg>
           </button>
         </div>
