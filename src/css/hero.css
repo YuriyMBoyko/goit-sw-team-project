@@ -1,3 +1,8 @@
+.hero {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .hero-section {
   min-width: 320px;
   max-width: 375px;
@@ -9,19 +14,13 @@
   background-size: auto; /* cover; */
   background-position: center;
   background-image:
-    linear-gradient(
-      var(--opacity-black-60),
-      var(--opacity-black-60)
-    ),
-    url(../img/hero/background-mobile.jpg);
+    linear-gradient(var(--opacity-black-50), var(--opacity-black-50)),
+    url(../img/hero/hero-mobile.jpg);
 
   @media screen and (min-resolution: 192dpi) {
     background-image:
-      linear-gradient(
-        var(--opacity-black-60),
-        var(--opacity-black-60)
-      ),
-      url(../img/hero/background-mobile@2x.jpg);
+    linear-gradient(var(--opacity-black-50), var(--opacity-black-50)),
+      url(../img/hero/hero-mobile@2x.jpg);
   }
 }
 
@@ -43,23 +42,22 @@
 
 @media screen and (min-width: 768px) {
   .hero-section {
+    max-width: 768px;
     padding-top: 325px;
     padding-bottom: 325px;
     background-image:
-      linear-gradient(
-        var(--opacity-black-60),
-        var(--opacity-black-60)
-      ),
-      url(../img/hero/background-tablet.jpg);
+    linear-gradient(var(--opacity-black-50), var(--opacity-black-50)),
+      url(../img/hero/hero-tablet.jpg);
 
     @media screen and (min-resolution: 192dpi) {
       background-image:
-        linear-gradient(
-          var(--opacity-black-60),
-          var(--opacity-black-60)
-        ),
-        url(../img/hero/background-tablet@2x.jpg);
+    linear-gradient(var(--opacity-black-50), var(--opacity-black-50)),
+        url(../img/hero/hero-tablet@2x.jpg);
     }
+  }
+
+  .hero-title-wrapper {
+    max-width: 768px;
   }
 
   .hero-button {
@@ -70,7 +68,7 @@
 
 @media screen and (min-width: 1440px) {
   .hero-section {
-    max-width: 768px;
+    max-width: 1440px;
     padding-top: 306px;
     padding-bottom: 306px;
     background-image:
@@ -78,7 +76,7 @@
         var(--opacity-black-50),
         var(--opacity-black-50)
       ),
-      url(../img/hero/background-desktop.jpg);
+      url(../img/hero/hero-desktop.jpg);
     
     @media screen and (min-resolution: 192dpi) {
       background-image:
@@ -86,7 +84,7 @@
           var(--opacity-black-50),
           var(--opacity-black-50)
         ),
-        url(../img/hero/background-desktop@2x.jpg);
+        url(../img/hero/hero-desktop@2x.jpg);
     }
   }    
 }

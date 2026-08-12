@@ -47,6 +47,8 @@
   --opacity-white-40: rgba(255, 255, 255, 0.4);
   --opacity-white-50: rgba(255, 255, 255, 0.5);
   --opacity-white-60: rgba(255, 255, 255, 0.6);
+  --opacity-black-50: rgba(0, 0, 0, 0.5);
+  --opacity-black-60: rgba(0, 0, 0, 0.6);
   --opacity-neutral-darkest-5: rgba(8, 12, 12, 0.05);
   --opacity-neutral-darkest-10: rgba(8, 12, 12, 0.1);
   --opacity-neutral-darkest-15: rgba(8, 12, 12, 0.15);
@@ -104,7 +106,7 @@ section {
   background-color: var(--color-scheme-1-background);
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   section {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -140,7 +142,7 @@ h2 + p {
   color: var(--color-scheme-1-text);
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   h1 {
     font-size: 56px;
   }
