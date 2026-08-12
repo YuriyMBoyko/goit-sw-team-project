@@ -1,44 +1,86 @@
-.header {
-  padding: 20px 0;
+html {
+  scroll-padding-top: 72px;
 }
-.nav {
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
+  background-color: var(--color-scheme-1-background);
+}
+
+.header-nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
-.nav-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+
+.header-nav-list {
+  display: none;
 }
-.nav-list {
+
+.header-nav-logo-icon {
+  width: 158px;
+  height: 72px;
+}
+
+.header-order-button {
+  display: none;
+}
+
+.header-mobile-menu-button {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
-.nav-link {
-  position: relative;
-  display: block;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: 200ms ease-in;
+
+.header-mobile-menu-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
-.nav-link:hover,
-.nav-link:focus {
-  color: #747bff;
+
+@media only screen and (min-width: 768px) {
+  .header-nav {
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .header-nav-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+  }
+
+  .header-order-button {
+    display: flex;
+/*    width: 133px;*/
+  }
+
+  .header-mobile-menu-button {
+    display: none;
+  }  
 }
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  width: 110%;
-  height: 4px;
-  border-radius: 4px;
-  transform-origin: center;
-  animation: stretch 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms both;
-}
-.nav-link.active::after {
-  background: #747bff;
+
+@media only screen and (min-width: 768px) {
+  .header-nav {
+    gap: 32px;
+  }
+
+  .header-nav-list {
+    gap: 32px;
+  }
 }
