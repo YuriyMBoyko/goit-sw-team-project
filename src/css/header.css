@@ -14,6 +14,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: transparent;
 }
 
 .header-nav-list {
@@ -23,6 +24,11 @@ html {
 .header-nav-logo-icon {
   width: 158px;
   height: 72px;
+  fill: currentColor;
+}
+
+.header-nav-link {
+  padding: 24px 0;
 }
 
 .header-order-button {
@@ -67,7 +73,7 @@ html {
 
   .header-order-button {
     display: flex;
-/*    width: 133px;*/
+    width: 133px;
   }
 
   .header-mobile-menu-button {
