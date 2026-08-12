@@ -49,13 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!ac_container) return;
 
+  const spriteUrl = new URL('../img/icons.svg', import.meta.url).href;
+  const iconId = 'keyboard-arrow-down';
+
   const markup = faqData.map(({ question, answer }) => `
       <li class="ac faq-item">
         <h3 class="ac-header faq-subtitle">
           <button class="ac-trigger faq-button" type="button">
             <span>${question}</span>
             <svg class="faq-icon">
-              <use href="./img/icons.svg#keyboard-arrow-down"></use>
+              <use href="${spriteUrl}#${iconId}"></use>
             </svg>
           </button>
         </h3>
