@@ -24,11 +24,15 @@
   .about-image-list {
     flex-direction: row;
     align-items: flex-start;
-    width: 704px;
-    overflow: hidden;
   }
 
   .about-image-item {
     flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .about-title-wrapper {
+    max-width: 786px;
   }
 }
