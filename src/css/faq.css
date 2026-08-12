@@ -1,0 +1,27 @@
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq-container {
+    gap: 80px;
+  }
+
+  .accordion-container {
+    max-width: 865px;
+  }
+}

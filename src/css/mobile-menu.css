@@ -1,0 +1,123 @@
+.mobile-menu-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--opacity-neutral-darkest-50);
+
+  z-index: 1999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body:has(.mobile-menu-overlay.is-open) {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.mobile-menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  background-color: var(--color-scheme-1-background);;
+  overflow-y: auto;
+}
+
+.mobile-menu-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0px;
+}
+
+.mobile-menu-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile-menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile-menu-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-left: auto;
+}
+
+.mobile-menu-logo-icon {
+  width: 158px;
+  height: 72px;
+}
+
+.mobile-menu-close-button-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 36px;
+  padding: 0;
+  width: 100%;
+}
+
+.mobile-menu-nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.mobile-menu-nav-item {
+  padding: 12px 0px;
+}
+
+.mobile-order-button {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-menu-overlay {
+    display: none;
+  }
+}

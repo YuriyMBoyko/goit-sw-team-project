@@ -1,0 +1,31 @@
+.about {
+  max-height: 1408px;  /* ????????????? */
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-image-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.about-image {
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-image-list {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}

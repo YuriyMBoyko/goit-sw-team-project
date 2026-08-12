@@ -1,0 +1,13 @@
+.section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  width: 100%;
+  background-color: var(--color-scheme-1-background);
+}
+
+@media only screen and (min-width: 1440px) {
+  .section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
