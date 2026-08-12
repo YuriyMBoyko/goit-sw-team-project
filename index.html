@@ -4,37 +4,147 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/goit-sw-team-project/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sweet Workshop</title>
+    <title>Солодка майстерня</title>
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-iCyXh_a_.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-Cy-nTa-E.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Sweet Workshop">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-        </li>
-        <li class="nav-item">
-        </li>
-      </ul>
-    </nav>
+    <div class="header-container">
+      <nav class="header-nav">
+        <a class="sw-link header-nav-logo" href="#" aria-label="Солодка майстерня">
+          <svg class="header-nav-logo-icon" aria-label="Логотип Солодкої майстерні">
+            <use href="/goit-sw-team-project/assets/logo-Dji5-_l6.svg#logo"></use>
+          </svg>
+        </a>
+        <ul class="header-nav-list">
+          <li class="header-nav-item">
+            <a class="sw-link header-nav-link" href="#dessert">Солодощі</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="sw-link header-nav-link" href="#about">Про нас</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="sw-link header-nav-link" href="#feedback">Відгуки</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="sw-link header-nav-link" href="#faq">Часті питання</a>
+          </li>
+        </ul>
+        <a href="#dessert" class="button-primary-small header-order-button">До покупок</a>
+        <button class="header-mobile-menu-button" type="button" data-mobile-menu-open>
+          <svg class="header-mobile-menu-icon">
+            <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#menu"></use>
+          </svg>
+        </button>
+      </nav>
+    </div>
   </div>
 </header>
 
 
     <main>
+      <section class="section" id="hero">
+  <div class="hero-section">
+    <div class="container hero-container">
+      <div class="sw-title-wrapper hero-title-wrapper">
+        <h1 class="sw-title hero-title">Ласкаво просимо до Солодкої Майстерні</h1>
+        <p class="sw-title-text hero-title-text">
+          Відкрийте для себе наші неперевершені десерти, приготовані з любов'ю та увагою до деталей. Кожен шматочок — це справжнє свято смаку!
+        </p>
+      </div>
+      <a href="#feedback" class="button-primary hero-button">Що про нас думають</a>
+    </div>
+  </div>
+</section>
+
+      <section class="section dessert" id="dessert">
+  <div class="container dessert-container">
+    <div class="dessert-wrapper">
+      <div class="sw-title-wrapper dessert-title-wrapper">
+        <h2 class="sw-title dessert-title">Солодощі</h2>
+        <p class="sw-title-text dessert-title-text">Спробуйте наші смачні десерти, які вас здивують!</p>
+      </div>
+      <ul class="dessert-category-list"></ul>
+      <ul class="dessert-list"></ul>
+    </div>
+    <button class="button-primary dessert-load-more-button" type="button">Завантажити ще</button>
+  </div>
+</section>
+      <section class="section about" id="about">
+  <div class="container about-container">
+    <div class="sw-title-wrapper about-title-wrapper">
+      <h2 class="sw-title about-title">Про Нас</h2>
+      <p class="sw-title-text about-title-text">У нашій 'Солодкій Майстерні' ми створюємо неповторні солодкі шедеври, що приносять радість та задоволення. Наша місія — пропонувати високоякісні десерти, які поєднують у собі вишуканий смак, свіжі інгредієнти та естетичний вигляд.</p>
+    </div>
+  </div>
+</section>
+      <section class="section feedback" id="feedback">
+  <div class="feedback-container container">
+    <div class="sw-title-wrapper feedback-title-wrapper">
+      <h2 class="sw-title feedback-title">Відгуки клієнтів</h2>
+      <p class="sw-title-text feedback-title-text">Найкращі десерти, які я коли-небудь куштував!</p>
+    </div>
+    <div class="feedback-wrapper">
+      <ul class="feedback-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="section faq" id="faq">
+  <div class="container faq-container">
+    <div class="sw-title-wrapper faq-title-wrapper">
+      <h2 class="sw-title faq-title">Часті питання</h2>
+      <p class="sw-title-text faq-title-text"></p>
+    </div>
+    <div class="accordion-container"></div>
+  </div>
+</section>
     </main>
 
     <footer class="footer">
   <div class="container">
   </div>
 </footer>
+
+    <div class="mobile-menu-overlay" data-mobile-menu>
+  <div class="mobile-menu">
+    <div class="container mobile-menu-container">
+      <div class="mobile-menu-header-wrapper">
+        <div class="mobile-menu-header">
+          <a class="mobile-menu-logo nav-link" href="#" aria-label="Солодка майстерня" data-mobile-menu-close>
+            <svg class="mobile-menu-logo-icon">
+              <use href="/goit-sw-team-project/assets/logo-Dji5-_l6.svg#logo"></use>
+            </svg>
+          </a>
+          <button class="sw-link mobile-menu-close-button" type="button" data-mobile-menu-close>
+            <svg class="mobile-menu-close-button-icon">
+              <use href="/goit-sw-team-project/assets/icons-BtjGAOoR.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu-nav">
+        <ul class="mobile-menu-nav-list">
+          <li class="mobile-menu-nav-item">
+            <a class="sw-link mobile-menu-nav-link" href="#dessert" data-mobile-menu-close>Солодощі</a>
+          </li>
+          <li class="mobile-menu-nav-item">
+            <a class="sw-link mobile-menu-nav-link" href="#about" data-mobile-menu-close>Про нас</a>
+          </li>
+          <li class="mobile-menu-nav-item">
+            <a class="sw-link mobile-menu-nav-link" href="#feedback" data-mobile-menu-close>Відгуки</a>
+          </li>
+          <li class="mobile-menu-nav-item">
+            <a class="sw-link mobile-menu-nav-link" href="#faq" data-mobile-menu-close>Часті питання</a>
+          </li>
+        </ul>
+        <a href="#dessert" class="mobile-order-button button-primary-small" data-mobile-menu-close>До покупок</a>
+      </nav>
+    </div>
+  </div>
+</div>
 
 
   </body>
