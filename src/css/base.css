@@ -73,6 +73,12 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -84,4 +90,66 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  width: 100%;
+  background-color: var(--color-scheme-1-background);
+}
+
+@media only screen and (min-width: 1440px) {
+  section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: var(--color-white);
+}
+
+h2 {
+  font-size: 36px;
+  color: var(--color-scheme-1-text);
+}
+
+h1 + p,
+h2 + p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+}
+
+@media only screen and (min-width: 1440px) {
+  h1 {
+    font-size: 56px;
+  }
+
+  h2 {
+    font-size: 48px;
+  }
+}
+
+.sw-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
 }
