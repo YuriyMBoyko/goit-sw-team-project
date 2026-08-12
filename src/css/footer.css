@@ -87,13 +87,13 @@
   color: var(--color-scheme-3-text);
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .footer-nav-list {
     flex-direction: row;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .footer {
     padding-top: 40px;
     padding-bottom: 40px;

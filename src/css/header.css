@@ -52,7 +52,7 @@ html {
   fill: currentColor;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .header-nav {
     justify-content: space-between;
     gap: 16px;
@@ -81,7 +81,7 @@ html {
   }  
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .header-nav {
     gap: 32px;
   }

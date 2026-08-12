@@ -116,7 +116,7 @@ body:has(.mobile-menu-overlay.is-open) {
   width: 100%;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .mobile-menu-overlay {
     display: none;
   }
