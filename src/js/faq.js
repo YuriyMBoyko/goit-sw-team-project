@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!ac_container) return;
 
-  const spriteUrl = getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down');
-  console.log(`This is spriteUrl from faq section: ${spriteUrl}`);
+  const spriteUrl = new URL('../img/icons.svg', import.meta.url).href;
+  const iconId = 'keyboard-arrow-down';
+
+//  const url = getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down');
+  const url = `${spriteUrl}#${iconId}`;
+  console.log(`This is url from faq section: ${url}`);
 
   const markup = faqData.faq.map(({ order_no, question, answer }) => `
       <li class="ac faq-item">
@@ -17,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="ac-trigger faq-button" type="button">
             <span>${order_no}. ${question}</span>
             <svg class="faq-icon">
-              <use href="${spriteUrl}"></use>
+              <use href="${url}"></use>
             </svg>
           </button>
         </h3>
