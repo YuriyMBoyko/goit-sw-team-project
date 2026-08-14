@@ -1,3 +1,4 @@
+import { getSvgIconUrl } from './helper.js';
 import feedbackData from './feedback-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,24 +15,26 @@ function markupFeedbackData(selectorOrElement, data) {
 
   if (!feedback_container) return;
 
+  const spriteUrl = getSvgIconUrl('../img/icons.svg', 'instagram');
+
   const markup = data.map(({ _id, rate, description, author }) => `
     <li class="feedback-item" data_id="${_id}">
       <div class="feedback-rating" data-rate="${rate}">
         <div class="feedback-star-wrapper">
           <svg class="feedback-star is-marked">
-            <use href="./img/icons.svg#instagram"></use>
+            <use href="${spriteUrl}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="./img/icons.svg#instagram"></use>
+            <use href="${spriteUrl}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="./img/icons.svg#instagram"></use>
+            <use href="${spriteUrl}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="./img/icons.svg#instagram"></use>
+            <use href="${spriteUrl}"></use>
           </svg>
           <svg class="feedback-star">
-            <use href="./img/icons.svg#instagram"></use>
+            <use href="${spriteUrl}"></use>
           </svg>
         </div>
       </div>

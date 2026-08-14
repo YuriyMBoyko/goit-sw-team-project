@@ -1,5 +1,6 @@
 import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
+import { getSvgIconUrl } from './helper.js';
 import faqData from './faq-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,16 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!ac_container) return;
 
-  const spriteUrl = new URL('../img/icons.svg', import.meta.url).href;
-  const iconId = 'keyboard-arrow-down';
-
   const markup = faqData.faq.map(({ order_no, question, answer }) => `
       <li class="ac faq-item">
         <h3 class="ac-header faq-subtitle">
           <button class="ac-trigger faq-button" type="button">
             <span>${order_no}. ${question}</span>
             <svg class="faq-icon">
-              <use href="${spriteUrl}#${iconId}"></use>
+              <use href="${getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down')}"></use>
             </svg>
           </button>
         </h3>
