@@ -19,7 +19,6 @@ function markupFeedbackData(selectorOrElement, data) {
   const iconId = 'instagram';
 
   const url = `${spriteUrl}#${iconId}`;
-  console.log(`This is url from feedback section: ${url}`);
 
   const markup = data.map(({ _id, rate, description, author }) => `
     <li class="feedback-item" data_id="${_id}">
