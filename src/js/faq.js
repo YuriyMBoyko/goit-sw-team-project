@@ -8,13 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!ac_container) return;
 
+  const spriteUrl = getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down');
+  console.log(`This is spriteUrl from faq section: ${spriteUrl}`);
+
   const markup = faqData.faq.map(({ order_no, question, answer }) => `
       <li class="ac faq-item">
         <h3 class="ac-header faq-subtitle">
           <button class="ac-trigger faq-button" type="button">
             <span>${order_no}. ${question}</span>
             <svg class="faq-icon">
-              <use href="${getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down')}"></use>
+              <use href="${spriteUrl}"></use>
             </svg>
           </button>
         </h3>
