@@ -15,27 +15,30 @@ function markupFeedbackData(selectorOrElement, data) {
 
   if (!feedback_container) return;
 
-  const spriteUrl = getSvgIconUrl('../img/icons.svg', 'instagram');
-  console.log(`This is spriteUrl from feedback section: ${spriteUrl}`);
+  const spriteUrl = new URL('../img/icons.svg', import.meta.url).href;
+  const iconId = 'instagram';
+
+  const url = `${spriteUrl}#${iconId}`;
+  console.log(`This is url from feedback section: ${url}`);
 
   const markup = data.map(({ _id, rate, description, author }) => `
     <li class="feedback-item" data_id="${_id}">
       <div class="feedback-rating" data-rate="${rate}">
         <div class="feedback-star-wrapper">
           <svg class="feedback-star is-marked">
-            <use href="${spriteUrl}"></use>
+            <use href="${url}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="${spriteUrl}"></use>
+            <use href="${url}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="${spriteUrl}"></use>
+            <use href="${url}"></use>
           </svg>
           <svg class="feedback-star is-marked">
-            <use href="${spriteUrl}"></use>
+            <use href="${url}"></use>
           </svg>
           <svg class="feedback-star">
-            <use href="${spriteUrl}"></use>
+            <use href="${url}"></use>
           </svg>
         </div>
       </div>
