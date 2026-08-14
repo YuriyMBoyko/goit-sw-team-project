@@ -1,0 +1,1 @@
+import categoriesData from './categories-data.js';

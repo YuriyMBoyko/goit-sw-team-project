@@ -70,10 +70,10 @@
 }
 /*
 .faq-button:focus,
+*/
 .accordion-container .ac .ac-trigger:focus {
   color: var(--color-scheme-1-text);
 }
-*/
 
 .accordion-container .ac .ac-trigger::after {
   display: none;
