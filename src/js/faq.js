@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const spriteUrl = new URL('../img/icons.svg', import.meta.url).href;
   const iconId = 'keyboard-arrow-down';
-
+/*
 //  const url = getSvgIconUrl('../img/icons.svg', 'keyboard-arrow-down');
   const url = `${spriteUrl}#${iconId}`;
   console.log(`This is url from faq section: ${url}`);
-
+*/
   const markup = faqData.faq.map(({ order_no, question, answer }) => `
       <li class="ac faq-item">
         <h3 class="ac-header faq-subtitle">
           <button class="ac-trigger faq-button" type="button">
             <span>${order_no}. ${question}</span>
             <svg class="faq-icon">
-              <use href="${url}"></use>
+              <use href="${spriteUrl}#${iconId}"></use>
             </svg>
           </button>
         </h3>
