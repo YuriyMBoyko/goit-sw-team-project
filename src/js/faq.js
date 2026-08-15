@@ -1,6 +1,6 @@
 import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
-import { getSvgIconUrl } from './helper.js';
+/*import { getSvgIconUrl } from './helper.js';*/
 import faqData from './faq-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
