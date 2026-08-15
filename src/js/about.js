@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,20 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
   function initAboutSwiper() {
     if (aboutSwiper) return;
     aboutSwiper = new Swiper('.about-swiper', {
-      modules: [Navigation, Pagination],
+      modules: [Navigation, Pagination, Keyboard],
+      direction: 'horizontal',
+      loop: false,
+
       slidesPerView: 1,
-      spaceBetween: 24,
+
       breakpoints: {
-        768: { slidesPerView: 2, spaceBetween: 24 },
+        768: {
+          slidesPerView: 2, 
+          spaceBetween: 24
+        },
       },
+
       navigation: {
-        nextEl: '.about-btn--next',
-        prevEl: '.about-btn--prev',
+        prevEl: '.about-button-prev',
+        nextEl: '.about-button-next',
       },
+
       pagination: {
         el: '.about-pagination',
+        type: 'bullets',
         clickable: true,
       },
+
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: false,
+      }
     });
   }
 
