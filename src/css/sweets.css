@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-/* ??????????????????? */  
+  /* ??????????????????? */
 }
 
 .sweets-list {
@@ -26,10 +26,10 @@
   border: 1px solid var(--color-scheme-1-border);
   border-radius: 16px;
   padding: 16px;
-/*  
+  /*  
   width: 335px;
   height: 433px;
-*/  
+*/
   min-width: 312px;
   background-color: var(--color-scheme-1-foreground);
 }
@@ -85,15 +85,22 @@
   .sweets-category-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 24px 32px;
+    align-items: center;
+
+    width: 100%;
+    gap: 16px 22px;
   }
 
   .sweets-category-item {
-    flex-basis: calc((100% - 5 * 24px) / 6);
+    flex: 0 0 auto;
+    width: fit-content;
   }
-
+  /* .sweets-category-item button {
+    width: fit-content;
+    white-space: nowrap;
+  } */
   .sweets-list {
     gap: 40px 24px;
   }
