@@ -1,77 +1,161 @@
-import dessertsData from './desserts-data.js';
+import { setElementVisible } from '../helper.js';
+import { fetchDessertsByCategory } from './desserts-data.js';
+import dessertsIconsUrl from '../../img/icons.svg';
 
-const sweetsList = document.querySelector('.sweets-list');
-const loadMoreButton = document.querySelector('.sweets-load-more-button');
+const refs = {
+  loadMoreButton: document.querySelector('.sweets-load-more-button'),
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  getDessertsByCategory();
+});
+
+refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
 
 const ITEMS_PER_PAGE = 8;
 
+let currentCategory = '';
 let currentPage = 1;
+let isLoading = false;
+let clickedCategoryName = '';
 
-function createDessertMarkup(dessert) {
-  return `
-    <li class="sweets-item">
-      <img
-        class="sweets-item-image"
-        src="${dessert.image}"
-        alt="${dessert.name}"
-      />
+async function getDessertsByCategory(category = '', page = 1) {
+  if (isLoading) {
+    if (clickedCategoryName.toLowerCase() !== category.toLowerCase()) return;
+    
+    setTimeout(() => {getProductsByCategory(category, page)}, 100);
+  } else {
+    isLoading = true;
+    try {
+      hideLoadMoreButton();
 
+      if (page === 1) handleDessertsData();
+
+      currentCategory = category;
+
+      const desserts = await fetchDessertsByCategory(currentCategory, page, ITEMS_PER_PAGE);
+
+      if (clickedCategoryName.toLowerCase() !== currentCategory.toLowerCase()) return;
+
+      handleDessertsData(desserts, page);
+    } catch(error) {
+      console.error(error);
+
+//      if (page === 1) {
+//        clearProducts();
+//      }
+
+//      showError(MESSAGES.ERROR_LOADING_PRODUCTS + '<br><br>' + error, true);
+    } finally {
+      isLoading = false;
+//      hideLoader(refs.loader);
+    }
+  }
+}
+
+function handleDessertsData(data, page = 1) {
+  const items = data?.desserts || [];
+  const totalItems = data?.totalItems || 0;
+  const limit = data?.limit || ITEMS_PER_PAGE;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+  currentPage = page;
+  if ((page === 1) && (items.length === 0)) {
+//    showNotFound(refs.notFound);
+//    showInfo(MESSAGES.INFO_NO_PRODUCTS_FOUND);
+    return;
+  }
+
+  renderDessertsData('.sweets-list', items, (page !== 1));
+
+//  let newProducts;
+//  if (page === 1) {
+//    newProducts = refs.productsList.querySelectorAll('.sweets-item');
+//  } else {
+//    const currentCount = refs.productsList.children.length;
+//    const allProducts = refs.productsList.querySelectorAll('.sweets-item');
+//    newProducts = Array.from(allProducts).slice(currentCount);
+//  }
+
+  if ((page >= totalPages) || (items.length < ITEMS_PER_PAGE)) {
+//    hideLoadMoreBtn(refs.loadMoreBtn);
+
+    if (page > 1) {
+      console.log('No more desserts');
+//      showInfo(MESSAGES.INFO_END_OF_PRODUCTS_LIST);
+    }
+  } else {
+    showLoadMoreButton();
+  }
+}
+
+function renderDessertsData(selectorOrElement, data, append = false) {
+  if (!selectorOrElement) return;
+
+  const isString = (typeof selectorOrElement === 'string');
+  const desserts_container = isString ? document.querySelector(selectorOrElement) : selectorOrElement;
+  if (!desserts_container) return;
+
+  const markup = createDessertsMarkup(data) || '';
+  if (markup === '') return;
+
+  if (append) {
+    desserts_container.insertAdjacentHTML('beforeend', markup);
+  } else {
+    desserts_container.innerHTML = markup;
+  }
+}
+
+function createDessertsMarkup(data) {
+  if (!data || !Array.isArray(data)) return '';
+
+/*  const spriteUrl = new URL('../../img/icons.svg', import.meta.url).href;*/
+  const spriteUrl = dessertsIconsUrl;
+  const iconId = 'arrow_outward';
+  const url = `${spriteUrl}#${iconId}`;
+
+  return data.map(({ _id, name, description, price, category, image }) => `
+    <li class="sweets-item" data-id="${_id}">
+      <img class="sweets-item-image" src="${image}" alt="${name}"/>
       <div class="sweets-item-content">
-        <p class="sweets-item-category">
-          ${dessert.category.name}
-        </p>
-
-        <h3 class="sweets-item-title">
-          ${dessert.name}
-        </h3>
-
-        <p class="sweets-item-description">
-          ${dessert.description}
-        </p>
-
-        <div class="sweets-item-bottom">
-          <p class="sweets-item-price">
-            ${dessert.price} грн
-          </p>
-
-          <button
-            class="sweets-item-button"
-            type="button"
-            data-id="${dessert._id}"
-            aria-label="Відкрити детальну інформацію"
-          >
-            ↗
+        <div class="sweets-item-info" >
+          <p class="sweets-item-category">${category.name}</p>
+          <div class="sweets-item-description-wrapper">
+            <h3 class="sweets-item-title">${name}</h3>
+            <p class="sweets-item-description">${description}</p>
+          </div>
+        </div>
+        <div class="sweets-item-price-wrapper">
+          <p class="sweets-item-price">${price} грн</p>
+          <button class="button-secondary-icon sweets-item-open-details-button" type="button" data-id="${_id}" aria-label="Відкрити детальну інформацію">
+            <svg class="sweets-item-open-details-button-icon">
+              <use href="${url}"></use>
+            </svg>
           </button>
         </div>
       </div>
     </li>
-  `;
+  `).join('');
 }
 
-function renderDesserts() {
-  const endIndex = currentPage * ITEMS_PER_PAGE;
-
-  const dessertsToRender = dessertsData.desserts.slice(0, endIndex);
-
-  sweetsList.innerHTML = dessertsToRender.map(createDessertMarkup).join('');
-
-  updateLoadMoreButton();
-}
-
-function updateLoadMoreButton() {
-  const displayedDesserts = currentPage * ITEMS_PER_PAGE;
-
-  if (displayedDesserts >= dessertsData.desserts.length) {
-    loadMoreButton.style.display = 'none';
-  } else {
-    loadMoreButton.style.display = 'block';
+async function handleLoadMoreButtonClick(event) {
+  try {
+    event.target.blur();
+    await getDessertsByCategory(currentCategory, currentPage + 1);
+  } catch(error) {
+    console.log(error)
+    showError(MESSAGES.ERROR_LOADING_PRODUCTS);
   }
 }
 
-loadMoreButton.addEventListener('click', () => {
-  currentPage += 1;
+function hideLoadMoreButton() {
+  if (refs.loadMoreButton) {
+    setElementVisible(refs.loadMoreButton, false);
+  }
+}
 
-  renderDesserts();
-});
-
-renderDesserts();
+function showLoadMoreButton() {
+  if (refs.loadMoreButton) {
+    setElementVisible(refs.loadMoreButton, true);
+  }
+}

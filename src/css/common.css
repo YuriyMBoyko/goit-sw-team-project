@@ -69,7 +69,7 @@
   &:hover,
   &:focus {
     border: 2px solid var(--color-neutral-darkest);
-    background-color: transparent;
+    background-color: var(--color-scheme-1-background);;
   }
 
   &:active {
@@ -118,6 +118,7 @@
   font-size: 16px;
   line-height: 150%;
   color: var(--color-neutral-darkest);
+  background-color: var(--color-scheme-1-background);
   transition:
     background-color var(--transition),
     opacity var(--transition);
