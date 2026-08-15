@@ -6,6 +6,31 @@
   gap: 40px;
 }
 
+.about-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 48px;
+}
+
+.about-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.about-swiper/*.swiper*/ {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
 .about-image-list {
   display: flex;
   flex-direction: column;
@@ -20,14 +45,96 @@
   object-fit: cover;
 }
 
+.about-swiper-buttons {
+  display: none;
+}
+
+.about-pagination.swiper-pagination {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
+  .about-slider-wrapper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .about-slider {
+    position: relative;
+  }
+
   .about-image-list {
     flex-direction: row;
     align-items: flex-start;
+    gap: 0;
   }
 
   .about-image-item {
     flex-basis: calc((100% - 24px) / 2);
+  }
+
+  .about-swiper-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-swiper-buttons {
+    display: flex;
+  }
+
+  .about-slider-arrow  {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+  }
+
+  .about-slider-arrow.swiper-button-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .about-button-prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .about-button-next {
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .about-pagination.swiper-pagination {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 9px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .about-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-neutral-lighter);
+    opacity: 1;
+    cursor: pointer;
+    transition: background-color var(--transition-100);
+  }
+
+  .about-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-scheme-1-text);
   }
 }
 
@@ -36,3 +143,4 @@
     max-width: 786px;
   }
 }
+
