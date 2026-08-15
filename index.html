@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Солодка майстерня</title>
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-Cb7VvBBu.js">
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BfPs2Zf6.css">
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-D583KKKf.css">
+    <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-DFiWJolJ.js">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BQl7bc_B.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-Di9Jabbr.css">
   </head>
   <body>
     <header class="header">
@@ -78,90 +78,130 @@
   <div class="container about-container">
     <div class="about-title-wrapper">
       <h2 class="about-title">Про Нас</h2>
-      <p class="about-title-text">У нашій 'Солодкій Майстерні' ми створюємо неповторні солодкі шедеври, що приносять радість та задоволення. Наша місія — пропонувати високоякісні десерти, які поєднують у собі вишуканий смак, свіжі інгредієнти та естетичний вигляд.</p>
+      <p class="about-title-text">
+        У нашій 'Солодкій Майстерні' ми створюємо неповторні солодкі шедеври, що
+        приносять радість та задоволення. Наша місія — пропонувати високоякісні
+        десерти, які поєднують у собі вишуканий смак, свіжі інгредієнти та
+        естетичний вигляд.
+      </p>
     </div>
-    <ul class="about-image-list">
-      <li class="about-image-item">
-        <div class="about-image-wrapper">
-          <picture>
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image01-By9HZnYj.jpg 1x, .img/about/desktop/about-image01@2x.jpg 2x"
-                media="(min-width: 1440px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image01-CTXp4HHP.jpg 1x, .img/about/tablet/about-image01@2x.jpg 2x"
-                media="(min-width: 768px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image01-D8ddBhDk.jpg 1x, .img/about/mobile/about-image01@2x.jpg 2x"
-                media="(max-width: 767px)">
-            <img 
-              class="about-image"
-              src="/goit-sw-team-project/assets/about-image01-D8ddBhDk.jpg"
-              alt="About Us image 1"
-              loading="lazy">
-          </picture>
+    <div class="about-slider-wrapper">
+      <div class="about-slider">
+        <div class="swiper about-swiper">
+          <ul class="swiper-wrapper about-image-list">
+            <li class="swiper-slide about-image-item">
+              <div class="about-image-wrapper">
+                <picture>
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image01-By9HZnYj.jpg 1x, /goit-sw-team-project/assets/about-image01@2x-BNjcASHU.jpg 2x"
+                    media="(min-width: 1440px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image01-CTXp4HHP.jpg 1x, /goit-sw-team-project/assets/about-image01@2x-Bq9GOiDu.jpg 2x"
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image01-D8ddBhDk.jpg 1x, /goit-sw-team-project/assets/about-image01@2x-Csm2RU-n.jpg 2x"
+                    media="(max-width: 767px)"
+                  />
+                  <img
+                    class="about-image"
+                    src="/goit-sw-team-project/assets/about-image01-D8ddBhDk.jpg"
+                    alt="Готуємо десерти у майстерні"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </li>
+            <li class="swiper-slide about-image-item">
+              <div class="about-image-wrapper">
+                <picture>
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image02-BQdgy8SN.jpg 1x, /goit-sw-team-project/assets/about-image02@2x-BKWZH32T.jpg 2x"
+                    media="(min-width: 1440px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image02-CxSPCgku.jpg 1x, /goit-sw-team-project/assets/about-image02@2x-BerjvMs2.jpg 2x"
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image02-2HpAFCcs.jpg 1x, /goit-sw-team-project/assets/about-image02@2x-CG7CRq4b.jpg 2x"
+                    media="(max-width: 767px)"
+                  />
+                  <img
+                    class="about-image"
+                    src="/goit-sw-team-project/assets/about-image02-2HpAFCcs.jpg"
+                    alt="Обговорюємо наше нове меню"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </li>
+            <li class="swiper-slide about-image-item">
+              <div class="about-image-wrapper">
+                <picture>
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image03-CX_yzx7s.jpg 1x, /goit-sw-team-project/assets/about-image03@2x-B3vYA9sO.jpg 2x"
+                    media="(min-width: 1440px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image03-DdwxdQbu.jpg 1x, /goit-sw-team-project/assets/about-image03@2x-6x46BbMW.jpg 2x"
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image03-BiUzWqPS.jpg 1x, /goit-sw-team-project/assets/about-image03@2x-mu-ZCCVs.jpg 2x"
+                    media="(max-width: 767px)"
+                  />
+                  <img
+                    class="about-image"
+                    src="/goit-sw-team-project/assets/about-image03-BiUzWqPS.jpg"
+                    alt="Вітрина з готовими десертами"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </li>
+            <li class="swiper-slide about-image-item">
+              <div class="about-image-wrapper">
+                <picture>
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image04-ByXl58Uq.jpg 1x, /goit-sw-team-project/assets/about-image04@2x-Ca2Kq2NB.jpg 2x"
+                    media="(min-width: 1440px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image04-DBepHeZV.jpg 1x, /goit-sw-team-project/assets/about-image04@2x-C-5hb4E_.jpg 2x"
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="/goit-sw-team-project/assets/about-image04-DJJT7nHk.jpg 1x, /goit-sw-team-project/assets/about-image04@2x-B6-8ErvX.jpg 2x"
+                    media="(max-width: 767px)"
+                  />
+                  <img
+                    class="about-image"
+                    src="/goit-sw-team-project/assets/about-image04-DJJT7nHk.jpg"
+                    alt="Наша клієнтка смакує торт з полуницею"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </li>
+          </ul>
         </div>
-      </li>
-      <li class="about-image-item">
-        <div class="about-image-wrapper">
-          <picture>
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image02-BQdgy8SN.jpg 1x, .img/about/desktop/about-image02@2x.jpg 2x"
-                media="(min-width: 1440px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image02-CxSPCgku.jpg 1x, .img/about/tablet/about-image02@2x.jpg 2x"
-                media="(min-width: 768px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image02-2HpAFCcs.jpg 1x, .img/about/mobile/about-image02@2x.jpg 2x"
-                media="(max-width: 767px)">
-            <img 
-              class="about-image"
-              src="/goit-sw-team-project/assets/about-image02-2HpAFCcs.jpg"
-              alt="About Us image 2"
-              loading="lazy">
-          </picture>
+        <div class="about-swiper-buttons">
+          <button class="slider-arrow about-slider-arrow about-button-prev" type="button" aria-label="Попередній слайд">
+            <svg width="24" height="24">
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#arrow-back"></use>
+            </svg>
+          </button>
+          <button class="slider-arrow about-slider-arrow about-button-next" type="button" aria-label="Наступний слайд">
+            <svg width="24" height="24">
+              <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#arrow-forward"></use>
+            </svg>
+          </button>
         </div>
-      </li>
-      <li class="about-image-item">
-        <div class="about-image-wrapper">
-          <picture>
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image03-CX_yzx7s.jpg 1x, .img/about/desktop/about-image03@2x.jpg 2x"
-                media="(min-width: 1440px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image03-DdwxdQbu.jpg 1x, .img/about/tablet/about-image03@2x.jpg 2x"
-                media="(min-width: 768px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image03-BiUzWqPS.jpg 1x, .img/about/mobile/about-image03@2x.jpg 2x"
-                media="(max-width: 767px)">
-            <img 
-              class="about-image"
-              src="/goit-sw-team-project/assets/about-image03-BiUzWqPS.jpg"
-              alt="About Us image 3"
-              loading="lazy">
-          </picture>
-        </div>
-      </li>
-      <li class="about-image-item">
-        <div class="about-image-wrapper">
-          <picture>
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image04-ByXl58Uq.jpg 1x, .img/about/desktop/about-image04@2x.jpg 2x"
-                media="(min-width: 1440px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image04-DBepHeZV.jpg 1x, .img/about/tablet/about-image04@2x.jpg 2x"
-                media="(min-width: 768px)">
-            <source 
-              srcset="/goit-sw-team-project/assets/about-image04-DJJT7nHk.jpg 1x, .img/about/mobile/about-image04@2x.jpg 2x"
-                media="(max-width: 767px)">
-            <img 
-              class="about-image"
-              src="/goit-sw-team-project/assets/about-image04-DJJT7nHk.jpg"
-              alt="About Us image 1"
-              loading="lazy">
-          </picture>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div class="swiper-pagination about-pagination"></div>
+    </div>
   </div>
 </section>
       <section class="feedback" id="feedback">
