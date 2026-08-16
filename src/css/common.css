@@ -159,6 +159,13 @@
   height: 40px;
 }
 
+.button-secondary-icon svg,
+.button-secondary-icon-small svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-neutral-darkest);
+}
+
 .slider-arrow {
   display: flex;
   justify-content: center;

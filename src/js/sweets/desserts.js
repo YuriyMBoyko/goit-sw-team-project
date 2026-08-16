@@ -1,6 +1,6 @@
 import { setElementVisible } from '../helper.js';
 import { fetchDessertsByCategory } from './desserts-data.js';
-import dessertsIconsUrl from '../../img/icons.svg';
+import spriteUrl from '../../img/icons.svg';
 
 const refs = {
   loadMoreButton: document.querySelector('.sweets-load-more-button'),
@@ -109,11 +109,6 @@ function renderDessertsData(selectorOrElement, data, append = false) {
 function createDessertsMarkup(data) {
   if (!data || !Array.isArray(data)) return '';
 
-/*  const spriteUrl = new URL('../../img/icons.svg', import.meta.url).href;*/
-  const spriteUrl = dessertsIconsUrl;
-  const iconId = 'arrow_outward';
-  const url = `${spriteUrl}#${iconId}`;
-
   return data.map(({ _id, name, description, price, category, image }) => `
     <li class="sweets-item" data-id="${_id}">
       <img class="sweets-item-image" src="${image}" alt="${name}"/>
@@ -129,7 +124,7 @@ function createDessertsMarkup(data) {
           <p class="sweets-item-price">${price} грн</p>
           <button class="button-secondary-icon sweets-item-open-details-button" type="button" data-id="${_id}" aria-label="Відкрити детальну інформацію">
             <svg class="sweets-item-open-details-button-icon">
-              <use href="${url}"></use>
+              <use href="${spriteUrl}#arrow-outward"></use>
             </svg>
           </button>
         </div>
