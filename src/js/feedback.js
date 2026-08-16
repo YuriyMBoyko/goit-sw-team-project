@@ -1,4 +1,4 @@
-/*import { getSvgIconUrl } from './helper.js';*/
+/*import { getSvgIconUrl } from './helpers.js';*/
 import feedbackData from './feedback-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
