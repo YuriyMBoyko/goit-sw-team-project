@@ -1,6 +1,6 @@
 import { ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
 import spriteUrl from '../../img/icons.svg';
-import { setElementVisible } from '../helper.js';
+import { setElementVisible } from '../helpers.js';
 import { fetchDessertsByCategory } from './desserts-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {

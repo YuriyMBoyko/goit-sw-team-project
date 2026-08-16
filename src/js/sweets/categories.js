@@ -1,6 +1,6 @@
 import { CLASS_NAMES, ALL_CATEGORIES, refs, state } from './sweets-consts.js';
 import { clearDesserts, loadDessertsByCategory } from './desserts.js';
-import { escapeHtml } from '../helper.js';
+import { escapeHtml } from '../helpers.js';
 import categoriesData, { fetchCategories } from './categories-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
