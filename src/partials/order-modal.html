@@ -1,0 +1,63 @@
+<div class="order-modal-overlay" data-order-modal-overlay hidden>
+  <div
+    class="order-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="order-modal-title"
+  >
+    <div class="order-modal-header">
+      <h3 class="order-modal-title" id="order-modal-title">
+        Оформлення замовлення
+      </h3>
+
+      <button
+        class="order-modal-close"
+        type="button"
+        aria-label="Закрити"
+        data-order-modal-close
+      >
+        <svg width="24" height="24">
+          <use href="./img/icons.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <form class="order-form" data-order-form novalidate>
+      <label class="order-form-label">
+        Ім'я
+        <input
+          class="order-form-input"
+          type="text"
+          name="name"
+          data-order-name
+          required
+        />
+      </label>
+
+      <label class="order-form-label">
+        Телефон
+        <input
+          class="order-form-input"
+          type="tel"
+          name="phone"
+          data-order-phone
+          required
+        />
+      </label>
+
+      <label class="order-form-label">
+        Коментар
+        <textarea
+          class="order-form-textarea"
+          name="comment"
+          data-order-comment
+          rows="4"
+        ></textarea>
+      </label>
+
+      <button class="button-primary order-form-submit" type="submit">
+        Надіслати заявку
+      </button>
+    </form>
+  </div>
+</div>
