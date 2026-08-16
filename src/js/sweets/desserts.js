@@ -1,41 +1,31 @@
+import { ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
+import spriteUrl from '../../img/icons.svg';
 import { setElementVisible } from '../helper.js';
 import { fetchDessertsByCategory } from './desserts-data.js';
-import spriteUrl from '../../img/icons.svg';
-
-const refs = {
-  loadMoreButton: document.querySelector('.sweets-load-more-button'),
-}
 
 document.addEventListener('DOMContentLoaded', () => {
-  getDessertsByCategory();
+  loadDessertsByCategory();
+
+  refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
 });
 
-refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
-
-const ITEMS_PER_PAGE = 8;
-
-let currentCategory = '';
-let currentPage = 1;
-let isLoading = false;
-let clickedCategoryName = '';
-
-async function getDessertsByCategory(category = '', page = 1) {
-  if (isLoading) {
-    if (clickedCategoryName.toLowerCase() !== category.toLowerCase()) return;
+export async function loadDessertsByCategory(category = '', page = 1) {
+  if (state.loading) {
+    if (state.clickedCategoryId.toLowerCase() !== category.toLowerCase()) return;
     
-    setTimeout(() => {getProductsByCategory(category, page)}, 100);
+    setTimeout(() => {loadDessertsByCategory(category, page)}, 100);
   } else {
-    isLoading = true;
+    state.loading = true;
     try {
       hideLoadMoreButton();
 
-      if (page === 1) handleDessertsData();
+      if (page === 1) clearDesserts();
 
-      currentCategory = category;
+      state.currentCategory = category;
 
-      const desserts = await fetchDessertsByCategory(currentCategory, page, ITEMS_PER_PAGE);
+      const desserts = await fetchDessertsByCategory(state.currentCategory, page, ITEMS_PER_PAGE);
 
-      if (clickedCategoryName.toLowerCase() !== currentCategory.toLowerCase()) return;
+      if (state.clickedCategoryId.toLowerCase() !== state.currentCategory.toLowerCase()) return;
 
       handleDessertsData(desserts, page);
     } catch(error) {
@@ -47,10 +37,14 @@ async function getDessertsByCategory(category = '', page = 1) {
 
 //      showError(MESSAGES.ERROR_LOADING_PRODUCTS + '<br><br>' + error, true);
     } finally {
-      isLoading = false;
+      state.loading = false;
 //      hideLoader(refs.loader);
     }
   }
+}
+
+export async function clearDesserts() {
+  if (refs.productList) refs.productList.innerHTML= '';
 }
 
 function handleDessertsData(data, page = 1) {
@@ -59,7 +53,7 @@ function handleDessertsData(data, page = 1) {
   const limit = data?.limit || ITEMS_PER_PAGE;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
-  currentPage = page;
+  state.currentPage = page;
   if ((page === 1) && (items.length === 0)) {
 //    showNotFound(refs.notFound);
 //    showInfo(MESSAGES.INFO_NO_PRODUCTS_FOUND);
@@ -135,8 +129,8 @@ function createDessertsMarkup(data) {
 
 async function handleLoadMoreButtonClick(event) {
   try {
-    event.target.blur();
-    await getDessertsByCategory(currentCategory, currentPage + 1);
+    event.currentTarget.blur();
+    await loadDessertsByCategory(state.currentCategory, state.currentPage + 1);
   } catch(error) {
     console.log(error)
     showError(MESSAGES.ERROR_LOADING_PRODUCTS);
