@@ -59,8 +59,8 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 160%;
-  text-wrap: nowrap;
   color: var(--color-neutral-darkest);
+  text-wrap: nowrap;
   transition:
     border var(--transition-100),
     background-color var(--transition-100),
@@ -69,7 +69,7 @@
   &:hover,
   &:focus {
     border: 2px solid var(--color-neutral-darkest);
-    background-color: transparent;
+    background-color: var(--color-scheme-1-background);;
   }
 
   &:active {
@@ -104,6 +104,13 @@
   height: 40px;
 }
 
+.button-primary-icon svg,
+.button-primary-icon-small svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-neutral-darkest);
+}
+
 .button-secondary,
 .button-secondary-small,
 .button-secondary-icon,
@@ -118,6 +125,8 @@
   font-size: 16px;
   line-height: 150%;
   color: var(--color-neutral-darkest);
+  background-color: var(--color-scheme-1-background);
+  text-wrap: nowrap;
   transition:
     background-color var(--transition),
     opacity var(--transition);
@@ -156,6 +165,13 @@
   padding: 8px;
   width: 40px;
   height: 40px;
+}
+
+.button-secondary-icon svg,
+.button-secondary-icon-small svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-neutral-darkest);
 }
 
 .slider-arrow {
