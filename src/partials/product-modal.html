@@ -1,0 +1,35 @@
+<div class="backdrop" id="productModalBackdrop" hidden>
+  
+  <article class="modal-card">
+    
+    <div class="modal-image-thumb">
+      <button class="modal-close-btn" id="closeModalBtn" type="button" aria-label="Закрити вікно">
+        <svg width="24" height="24">
+          <use href="./img/icons.svg#close"></use>
+        </svg>
+      </button>
+
+      <img src="" alt="" id="modalImage" class="modal-image" loading="lazy">
+    </div>
+
+    <div class="modal-content">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      
+      <div class="modal-price"><span id="modalPrice"></span> грн</div>
+      
+      <div class="modal-rating" id="modalRating" aria-label="Рейтинг товару"></div>
+
+      <div class="modal-text-block">
+        <p class="modal-description" id="modalDescription"></p>
+        
+        <p class="modal-ingredients">
+          <strong>Склад:</strong> <span id="modalComposition"></span>
+        </p>
+      </div>
+
+      <button class="modal-action-btn" id="orderButton" type="button">Перейти до замовлення</button>
+    </div>
+    
+  </article>
+
+</div>
