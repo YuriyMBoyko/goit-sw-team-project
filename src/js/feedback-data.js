@@ -1,4 +1,4 @@
-export async function fetchFeedbackData() {
+export async function fetchFeedbacks() {
   return feedbackData;
 }
 

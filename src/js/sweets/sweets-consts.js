@@ -5,8 +5,6 @@ export const CLASS_NAMES = {
   CATEGORY_BUTTON: 'sweets-category-button',
   CATEGORY_DROPDOWN: 'sweets-category-dropdown',
   PRODUCT_OPEN_DETAIL: 'sweets-item-open-details-button',
-  IS_ACTIVE: 'is-active',
-  IS_OPEN: 'is-open',
 }
 
 export const ALL_CATEGORIES = Object.freeze({ _id: '', name: 'Всі десерти' });
