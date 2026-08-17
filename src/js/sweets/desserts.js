@@ -1,8 +1,10 @@
-import { ITEMS_PER_PAGE, CLASS_NAMES, refs, state } from './sweets-consts.js';
+import { CLASS_NAMES, ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
 import spriteUrl from '../../img/icons.svg';
 import { setElementVisible } from '../helpers.js';
-import { fetchDessertsByCategory } from './desserts-data.js';
 import { openOrderModal } from '../order-modal.js';
+import { fetchDessertsByCategory } from '../api.js';
+import { showLoader, hideLoader, showError } from '../helpers.js';
+/*import { fetchDessertsByCategory } from './desserts-data.js';*/
 
 document.addEventListener('DOMContentLoaded', () => {
   loadDessertsByCategory();
@@ -17,8 +19,9 @@ export async function loadDessertsByCategory(category = '', page = 1) {
     
     setTimeout(() => {loadDessertsByCategory(category, page)}, 100);
   } else {
-    state.loading = true;
     try {
+      state.loading = true;
+      showLoader(refs.productLoader);
       hideLoadMoreButton();
 
       if (page === 1) clearDesserts();
@@ -32,15 +35,15 @@ export async function loadDessertsByCategory(category = '', page = 1) {
       handleDessertsData(desserts, page);
     } catch(error) {
       console.error(error);
+      showError(`${STRINGS.ERROR_LOAD_PRODUCTS}<br/><br/>${error}`, true);
 
-//      if (page === 1) {
-//        clearProducts();
-//      }
+      if (page === 1) {
+        clearDesserts();
+      }
 
-//      showError(MESSAGES.ERROR_LOADING_PRODUCTS + '<br><br>' + error, true);
     } finally {
       state.loading = false;
-//      hideLoader(refs.loader);
+      hideLoader(refs.producLoader);
     }
   }
 }
@@ -57,30 +60,12 @@ function handleDessertsData(data, page = 1) {
 
   state.currentPage = page;
   if ((page === 1) && (items.length === 0)) {
-//    showNotFound(refs.notFound);
-//    showInfo(MESSAGES.INFO_NO_PRODUCTS_FOUND);
     return;
   }
 
   renderDessertsData('.sweets-list', items, (page !== 1));
 
-//  let newProducts;
-//  if (page === 1) {
-//    newProducts = refs.productsList.querySelectorAll('.sweets-item');
-//  } else {
-//    const currentCount = refs.productsList.children.length;
-//    const allProducts = refs.productsList.querySelectorAll('.sweets-item');
-//    newProducts = Array.from(allProducts).slice(currentCount);
-//  }
-
-  if ((page >= totalPages) || (items.length < ITEMS_PER_PAGE)) {
-//    hideLoadMoreBtn(refs.loadMoreBtn);
-
-    if (page > 1) {
-      console.log('No more desserts');
-//      showInfo(MESSAGES.INFO_END_OF_PRODUCTS_LIST);
-    }
-  } else {
+  if ((page < totalPages) && (items.length === ITEMS_PER_PAGE)) {
     showLoadMoreButton();
   }
 }

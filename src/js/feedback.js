@@ -4,11 +4,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'css-star-rating/css/star-rating.css';
-import { fetchFeedbackData } from './feedback-data.js';
+import { STRINGS } from './consts.js';
+import { showLoader, hideLoader, showError } from './helpers.js';
 import { buildStarRatingMarkup } from './feedback-stars.js';
+import { fetchFeedbacks } from './api.js';
+/*import { fetchFeedbacks } from './feedback-data.js';*/
 
 const refs = {
   feedbackContainer: document.querySelector('.feedback-data-container'),
+  feedbackLoader: document.querySelector('.feedback-loader-container'),
 }
 
 const state = {
@@ -16,25 +20,52 @@ const state = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadFeedbacks();
-
-  initFeedbackSwiper();
+  initFeedbacks();
 });
+
+function initFeedbacks(lazyLoad = true) {
+  if (!lazyLoad || (!'IntersectionObserver' in window)) {
+    loadFeedbacks();
+
+    initFeedbackSwiper();
+  } else {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => { initFeedbacks(false); }, 100);
+          observer.unobserve(entry.target);
+        }
+      })
+    }, {
+      rootMargin: '20px',
+    });
+
+    observer.observe(refs.feedbackContainer);
+  }
+}
 
 async function loadFeedbacks() {
   if (state.loading) {
     setTimeout(() => { loadFeedbacks(); }, 100);
+    return;
   }
 
   try {
     state.loading = true;
+    showLoader(refs.feedbackLoader);
 
-    const data = await fetchFeedbackData();
-    renderFeedbacks(data?.feedbacks || []);
+    const data = await fetchFeedbacks();
+    if (!data || (data.length < 3)){
+      showError(STRINGS.ERROR_NOT_ENOUGH_FEEDBACKS);
+    } else {
+      renderFeedbacks(data?.feedbacks || []);
+    }
   } catch(error) {
     console.log(error);
+    showError(`${STRINGS.ERROR_LOAD_FEEDBACKS}<br/><br/>${error}`);
   } finally {
     state.loading = false;
+    hideLoader(refs.feedbackLoader);
   }
 }
 
@@ -58,20 +89,18 @@ function createFeedbackMarkup(data = []) {
 }
 
 function initFeedbackSwiper() {
-  const aboutSwiper = new Swiper('.feedback-swiper', {
+  const feedbackSwiper = new Swiper('.feedback-swiper', {
     modules: [Navigation, Pagination, Keyboard],
-/*    direction: 'horizontal',*/
+    direction: 'horizontal',
     loop: false,
+    simulateTouch: true,
 
     slidesPerView: 1,
     spaceBetween: 24,
-    dynamicBullets: true,
-/*    dynamicMainBullets: 3,*/
 
     breakpoints: {
       768: {
         slidesPerView: 3, 
-        spaceBetween: 24
       },
     },
 
@@ -84,6 +113,10 @@ function initFeedbackSwiper() {
       el: '.feedback-swiper-pagination',
       type: 'bullets',
       clickable: true,
+/*      
+      dynamicBullets: true,
+      dynamicMainBullets: 6,
+*/      
     },
 
     keyboard: {
