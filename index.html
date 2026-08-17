@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Солодка майстерня</title>
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-CyJSl1BR.js">
+    <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-CWCWqKes.js">
     <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BSfqrMAl.css">
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-BS5EiKzg.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-BgjrD2PF.css">
   </head>
   <body>
     <header class="header">
@@ -357,7 +357,40 @@
   </div>
 </div>
 
+    <div class="backdrop" id="product-modal-backdrop" hidden>
+  
+  <article class="modal-card">
     
+    <div class="modal-image-thumb">
+      <button class="modal-close-btn" id="close-modal-btn" type="button" aria-label="Закрити вікно">
+        <svg width="24" height="24">
+          <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#close"></use>
+        </svg>
+      </button>
+
+      <img src="" alt="" id="modal-image" class="modal-image" loading="lazy">
+    </div>
+
+    <div class="modal-content">
+      <div class="modal-title-block">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-price"><span id="modal-price"></span> грн</div>
+      </div>
+      
+      <div class="modal-rating" id="modal-rating" aria-label="Рейтинг товару"></div>
+
+      <p class="modal-description" id="modal-description"></p>
+      
+      <p class="modal-ingredients">
+        <strong>Склад:</strong> <span id="modal-composition"></span>
+      </p>
+
+      <button class="button-primary modal-action-btn" id="order-button" type="button">Перейти до замовлення</button>
+    </div>
+    
+  </article>
+
+</div>
     <div class="modal-backdrop order-modal-overlay" data-order-modal-overlay>
   <div class="modal-window order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
     <button class="modal-close-button order-modal-close" type="button" aria-label="Закрити" data-order-modal-close>
@@ -368,17 +401,17 @@
     <h2 class="order-modal-title" id="order-modal-title">Оформлення замовлення</h2>
     <form class="modal-form order-form" data-order-form novalidate>
       <label class="modal-form-label order-form-label">Ім'я*
-        <input class="modal-form-input order-form-input" type="text" name="name" placeholder="Вікторія" required data-order-name />
+        <input class="modal-form-input order-form-input" type="text" name="name" placeholder="Вікторія" required data-order-name data-error-message=""/>
         <span class="modal-form-input-error order-form-error"></span>
       </label>
 
       <label class="modal-form-label order-form-label">Телефон*
-        <input class="modal-form-input order-form-input" type="tel" name="phone" placeholder="38 0__ _______" required data-order-phone />
+        <input class="modal-form-input order-form-input" type="tel" name="phone" placeholder="38 0__ _______" required data-order-phone data-error-message=""/>
         <span class="modal-form-input-error order-form-error"></span>
       </label>
 
       <label class="modal-form-label order-form-label">Коментар*
-        <textarea class="modal-form-textarea order-form-textarea" name="comment" placeholder="Ваш коментар" required data-order-comment></textarea>
+        <textarea class="modal-form-textarea order-form-textarea" name="comment" placeholder="Ваш коментар" required data-order-comment data-error-message=""></textarea>
         <span class="modal-form-textarea-error order-form-error"></span>
       </label>
 
