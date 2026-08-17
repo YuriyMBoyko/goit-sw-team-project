@@ -8,17 +8,17 @@
     <h2 class="order-modal-title" id="order-modal-title">Оформлення замовлення</h2>
     <form class="modal-form order-form" data-order-form novalidate>
       <label class="modal-form-label order-form-label">Ім'я*
-        <input class="modal-form-input order-form-input" type="text" name="name" placeholder="Вікторія" required data-order-name />
+        <input class="modal-form-input order-form-input" type="text" name="name" placeholder="Вікторія" required data-order-name data-error-message=""/>
         <span class="modal-form-input-error order-form-error"></span>
       </label>
 
       <label class="modal-form-label order-form-label">Телефон*
-        <input class="modal-form-input order-form-input" type="tel" name="phone" placeholder="38 0__ _______" required data-order-phone />
+        <input class="modal-form-input order-form-input" type="tel" name="phone" placeholder="38 0__ _______" required data-order-phone data-error-message=""/>
         <span class="modal-form-input-error order-form-error"></span>
       </label>
 
       <label class="modal-form-label order-form-label">Коментар*
-        <textarea class="modal-form-textarea order-form-textarea" name="comment" placeholder="Ваш коментар" required data-order-comment></textarea>
+        <textarea class="modal-form-textarea order-form-textarea" name="comment" placeholder="Ваш коментар" required data-order-comment data-error-message=""></textarea>
         <span class="modal-form-textarea-error order-form-error"></span>
       </label>
 

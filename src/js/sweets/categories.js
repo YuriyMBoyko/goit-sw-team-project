@@ -1,7 +1,9 @@
+import { CSS_CLASSES, STRINGS } from '../consts.js';
 import { CLASS_NAMES, ALL_CATEGORIES, refs, state } from './sweets-consts.js';
 import { clearDesserts, loadDessertsByCategory } from './desserts.js';
-import { escapeHtml } from '../helpers.js';
-import categoriesData, { fetchCategories } from './categories-data.js';
+import { showLoader, hideLoader, showError, escapeHtml } from '../helpers.js';
+import { fetchCategories } from '../api.js';
+/*import { fetchCategories } from './categories-data.js';*/
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!refs.categoryList) return;
@@ -13,23 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', onDocumentClick);
   document.addEventListener('keydown', onDocumentKeydown);
-  /*
-  refs.loadMoreButton.addEventListener('click', () => loadDeserts());
-  refs.categoryList.addEventListener('click', onCategoryListClick);
-  refs.dessertList.addEventListener('click', onDessertListClick);
-
-  document.addEventListener('click', onDocumentClick);
-  document.addEventListener('keydown', onDocumentKeydown);
-*/
 });
 
 async function loadCategories() {
   if (state.loading) {
     setTimeout(() => { loadCategories(); }, 100);
+    return;
   }
 
   try {
     state.loading = true;
+    showLoader(refs.categoryLoader);
+  
     renderCategories();
     clearDesserts();
 
@@ -39,7 +36,7 @@ async function loadCategories() {
 
     const firstBtn = refs.categoryList.querySelector(`.${CLASS_NAMES.CATEGORY_BUTTON}`);
     if (firstBtn) {
-      firstBtn.classList.add(CLASS_NAMES.IS_ACTIVE);
+      firstBtn.classList.add(CSS_CLASSES.IS_ACTIVE);
       setDropdownName(firstBtn.dataset.categoryName);
     }
 
@@ -49,7 +46,9 @@ async function loadCategories() {
 /*    initProductModal(refs.productsList);*/
   } catch(error) {
     console.log(error);
+    showError(`${STRINGS.ERROR_LOAD_CATEGORIES}<br/><br/>${error}`);
   } finally {
+    hideLoader(refs.categoryLoader);
     state.loading = false;
   }
 }
@@ -73,14 +72,14 @@ function createCategoryMarkup(categories) {
 
 async function handleCategoryClick(event) {
   const clicked = event.target;  
-  if (!clicked || !clicked.classList.contains(CLASS_NAMES.CATEGORY_BUTTON) || clicked.classList.contains(CLASS_NAMES.IS_ACTIVE)) return;
+  if (!clicked || !clicked.classList.contains(CLASS_NAMES.CATEGORY_BUTTON) || clicked.classList.contains(CSS_CLASSES.IS_ACTIVE)) return;
 
-  document.querySelector(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CLASS_NAMES.IS_ACTIVE}`)?.classList.remove(CLASS_NAMES.IS_ACTIVE);
+  document.querySelector(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CSS_CLASSES.IS_ACTIVE}`)?.classList.remove(CSS_CLASSES.IS_ACTIVE);
 
   setDropdownOpen(false);
   setDropdownName(clicked.dataset.categoryName);
 
-  clicked.classList.add(CLASS_NAMES.IS_ACTIVE);
+  clicked.classList.add(CSS_CLASSES.IS_ACTIVE);
   clicked.blur();
   setTimeout(() => {
     state.clickedCategoryId = clicked.dataset.categoryId;
@@ -92,7 +91,7 @@ function handleCategoryDropdownClick(event) {
   const clicked = event.currentTarget;
   if (!clicked || !clicked.classList.contains(CLASS_NAMES.CATEGORY_DROPDOWN)) return;
 
-  clicked.classList.toggle(CLASS_NAMES.IS_OPEN);
+  clicked.classList.toggle(CSS_CLASSES.IS_OPEN);
 }
 
 function onDocumentClick(event) {
@@ -109,12 +108,12 @@ function onDocumentKeydown(event) {
 
 function setDropdownOpen(isOpen) {
   if (refs.categoryDropDown) {
-    refs.categoryDropDown.classList.toggle('is-open', isOpen);
+    refs.categoryDropDown.classList.toggle(CSS_CLASSES.IS_OPEN, isOpen);
   }
 }
 
 function dropdownIsOpen() {
-  return refs.categoryDropDown ? refs.categoryDropDown.classList.contains(CLASS_NAMES.IS_OPEN) : false;
+  return refs.categoryDropDown ? refs.categoryDropDown.classList.contains(CSS_CLASSES.IS_OPEN) : false;
 }
 
 function setDropdownName(value) {

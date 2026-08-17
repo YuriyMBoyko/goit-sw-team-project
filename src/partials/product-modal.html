@@ -1,33 +1,32 @@
-<div class="backdrop" id="productModalBackdrop" hidden>
+<div class="backdrop" id="product-modal-backdrop" hidden>
   
   <article class="modal-card">
     
     <div class="modal-image-thumb">
-      <button class="modal-close-btn" id="closeModalBtn" type="button" aria-label="Закрити вікно">
+      <button class="modal-close-btn" id="close-modal-btn" type="button" aria-label="Закрити вікно">
         <svg width="24" height="24">
           <use href="./img/icons.svg#close"></use>
         </svg>
       </button>
 
-      <img src="" alt="" id="modalImage" class="modal-image" loading="lazy">
+      <img src="" alt="" id="modal-image" class="modal-image" loading="lazy">
     </div>
 
     <div class="modal-content">
-      <h2 class="modal-title" id="modalTitle"></h2>
-      
-      <div class="modal-price"><span id="modalPrice"></span> грн</div>
-      
-      <div class="modal-rating" id="modalRating" aria-label="Рейтинг товару"></div>
-
-      <div class="modal-text-block">
-        <p class="modal-description" id="modalDescription"></p>
-        
-        <p class="modal-ingredients">
-          <strong>Склад:</strong> <span id="modalComposition"></span>
-        </p>
+      <div class="modal-title-block">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-price"><span id="modal-price"></span> грн</div>
       </div>
+      
+      <div class="modal-rating" id="modal-rating" aria-label="Рейтинг товару"></div>
 
-      <button class="modal-action-btn" id="orderButton" type="button">Перейти до замовлення</button>
+      <p class="modal-description" id="modal-description"></p>
+      
+      <p class="modal-ingredients">
+        <strong>Склад:</strong> <span id="modal-composition"></span>
+      </p>
+
+      <button class="button-primary modal-action-btn" id="order-button" type="button">Перейти до замовлення</button>
     </div>
     
   </article>

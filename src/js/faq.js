@@ -29,9 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new Accordion('.accordion-container', {
     duration: 400,
     showMultiple: false,
-    onOpen: function (element) {
-      console.log(element);
-    }
   });
 
 })

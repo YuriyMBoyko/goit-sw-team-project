@@ -1,5 +1,6 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { postOrder } from './api.js';
+import { CSS_CLASSES } from './consts.js';
+import { getElement, showOrderSuccess, showError } from './helpers.js';
 
 const refs = {
   overlay: document.querySelector('[data-order-modal-overlay]'),
@@ -41,40 +42,87 @@ function handleEscape(event) {
   if (event.key === 'Escape') closeOrderModal();
 }
 
-function validateForm() {
+function validateName(name) {
+/*  
+  const namePattern = /^[a-zA-Z\s\.]{5,28}$/;
+  return namePattern.test(name);
+*/
+  return (name.length >= 5) && (name.length <= 28);
+}
+
+function validatePhone(phone) {
+  const phonePattern = /^380\d{9}$/;
+  return phonePattern.test(phone);
+}
+
+function validateComment(comment) {
+  return (comment.length >= 10) && (comment.length <= 256);
+}
+
+function validateForm({ name, phone, comment }) {
+
   console.log(
-    'validateForm called, name:',
-    refs.nameInput.value,
+    'validateForm called: name:',
+    name,
     'phone:',
-    refs.phoneInput.value
+    phone,
+    'comment',
+    comment
   );
 
   let isValid = true;
 
-  if (!refs.nameInput.value.trim()) {
-    refs.nameInput.classList.add('is-invalid');
-    isValid = false;
+  if (validateName(name)) {
+    hideOrderError(refs.nameInput);
   } else {
-    refs.nameInput.classList.remove('is-invalid');
+    showOrderError(refs.nameInput, 'Ім\'я має містити від 5 до 28 символів');
+    isValid = false;
   }
 
-  const phonePattern = /^380\d{9}$/;
-  if (!phonePattern.test(refs.phoneInput.value.trim())) {
-    refs.phoneInput.classList.add('is-invalid');
-    isValid = false;
+  if (validatePhone(phone)) {
+    hideOrderError(refs.phoneInput);
   } else {
-    refs.phoneInput.classList.remove('is-invalid');
+    showOrderError(refs.phoneInput, 'Номер телефону повинен містити 12 цифр');
+    isValie = false;
+  }
+
+  if (validateComment(comment)) {
+    hideOrderError(refs.commentInput);
+  } else {
+    showOrderError(refs.commentInput, 'Коментар повинен містити від 10 до 256 символів');
+    isValid = false;
   }
 
   console.log('validateForm result:', isValid);
   return isValid;
 }
 
+function showOrderError(selectorOrElement, message) {
+  const element = getElement(selectorOrElement);
+
+  if (element) {
+    element.classList.toggle(CSS_CLASSES.IS_INVALID, true);
+    showOrderErrorMessage(element, message);
+  }
+}
+
+function hideOrderError(selectorOrElement) {
+  const element = getElement(selectorOrElement);
+  if (element) {
+    element.classList.toggle(CSS_CLASSES.IS_INVALID, false);
+    showOrderErrorMessage(element, '');
+  }
+}
+
+function showOrderErrorMessage(elementOrSelector, message) {
+  const element = getElement(elementOrSelector);
+  if (element) {
+    element.dataset.errorMessage = message;
+  }
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
-  console.log('handleSubmit called');
-
-  if (!validateForm()) return;
 
   const orderData = {
     name: refs.nameInput.value.trim(),
@@ -83,35 +131,21 @@ async function handleSubmit(event) {
     comment: refs.commentInput.value.trim(),
   };
 
+  if (!validateForm(orderData)) return;
+
   try {
-    const response = await fetch(
-      'https://deserts-store.b.goit.study/api/orders',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('Помилка при відправці замовлення');
-    }
-
-    const result = await response.json();
-
-    iziToast.success({
-      title: 'Успіх',
-      message: `Замовлення №${result.orderNum} успішно оформлено!`,
-      position: 'topRight',
-    });
-
-    refs.form.reset();
-    closeOrderModal();
+    postOrder(orderData)
+      .then(({ orderNum }) => {
+        showOrderSuccess(orderNum);
+        closeOrderModal();
+      })
+      .catch(error => {
+        showOrderError(error.message);
+      })
+      .finally(() => {
+        event.target.reset();
+      })
   } catch (error) {
-    iziToast.error({
-      title: 'Помилка',
-      message: error.message,
-      position: 'topRight',
-    });
+    showError(`Щось пішло не так<br/><br/>${error}`);
   }
 }

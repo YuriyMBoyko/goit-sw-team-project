@@ -1,6 +1,7 @@
+import { fetchDessert } from '../api.js';
 import { openOrderModal } from '../order-modal.js';
-
-const BASE_URL = 'https://deserts-store.b.goit.study/api';
+import { showError } from '../helpers.js';
+import { STRINGS } from '../consts.js';
 
 let backdrop, closeBtn, orderBtn;
 let currentProductId = null;
@@ -20,27 +21,25 @@ function generateStars(rating) {
   }
   return starsHtml;
 }
+
 export async function openProductModal(productId) {
   currentProductId = productId;
   
   try {
-    const response = await fetch(`${BASE_URL}/desserts/${productId}`);
-    if (!response.ok) throw new Error('Помилка завантаження даних');
-    
-    const productData = await response.json();
+    const productData = await fetchDessert(productId);
 
-    backdrop = document.getElementById('productModalBackdrop');
-    closeBtn = document.getElementById('closeModalBtn');
-    orderBtn = document.getElementById('orderButton');
+    backdrop = document.getElementById('product-modal-backdrop');
+    closeBtn = document.getElementById('close-modal-btn');
+    orderBtn = document.getElementById('order-button');
 
     if (!backdrop) return;
 
-    const image = document.getElementById('modalImage');
-    const title = document.getElementById('modalTitle');
-    const price = document.getElementById('modalPrice');
-    const rating = document.getElementById('modalRating');
-    const description = document.getElementById('modalDescription');
-    const composition = document.getElementById('modalComposition');
+    const image = document.getElementById('modal-image');
+    const title = document.getElementById('modal-title');
+    const price = document.getElementById('modal-price');
+    const rating = document.getElementById('modal-rating');
+    const description = document.getElementById('modal-description');
+    const composition = document.getElementById('modal-composition');
 
     if (image) {
       image.src = productData.image;
@@ -62,6 +61,7 @@ export async function openProductModal(productId) {
 
   } catch (error) {
     console.error('Помилка відкриття модалки:', error);
+    showError(`${STRINGS.ERROR_LOAD_DESSERT}<br/><br/>${error}`)
   }
 }
 
@@ -83,7 +83,7 @@ function handleEscapeKey(event) {
   if (event.code === 'Escape') closeProductModal();
 }
 
-function handleOrderClick() {
+function handleOrderClick(event) {
   closeProductModal();
   openOrderModal(currentProductId); 
 }
