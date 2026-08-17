@@ -5,6 +5,7 @@ import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
 import { showLoader, hideLoader, showError } from '../helpers.js';
 /*import { fetchDessertsByCategory } from './desserts-data.js';*/
+import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadDessertsByCategory();
@@ -144,5 +145,6 @@ function handleProductClick(event) {
   if (!clicked) return
 
   console.log(clicked);
-  openOrderModal(clicked.dataset.Id);
+  const productId = clicked.dataset.id;
+  openProductModal(productId);
 }
