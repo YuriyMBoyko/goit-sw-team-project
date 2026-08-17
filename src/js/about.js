@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
           spaceBetween: 24
         },
       },
+      lazy: true,
 
       navigation: {
         prevEl: '.about-button-prev',

@@ -1,8 +1,14 @@
 export async function fetchDessertsByCategory(category, page, limit) {
-  const data = dessertsData.desserts.slice((page - 1) * limit, page * limit);
+  const data = (typeof category !== 'string') ? []: (
+    ((category === '') 
+      ? dessertsData.desserts
+      : dessertsData.desserts.filter((dessert) => (dessert.category._id === category))
+    ).slice((page - 1) * limit, page * limit)
+  );
+
   return {
     "desserts": data,
-    "totalItems": dessertsData.desserts.length,
+    "totalItems": ((category === '') ? dessertsData.desserts : dessertsData.desserts.filter((dessert) => (dessert.category._id === category))).length,
     "page": page,
     "limit": limit
   };
@@ -16,6 +22,7 @@ const dessertsData = {
       "description": "Багатошаровий італійський десерт з кавовим смаком і ніжним сиром маскарпоне.",
       "price": 130,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47720.png"
@@ -26,6 +33,7 @@ const dessertsData = {
       "description": "Ніжний вершковий десерт з полуничним або малиновим соусом.",
       "price": 115,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47721.png"
@@ -36,6 +44,7 @@ const dessertsData = {
       "description": "Хрусткі трубочки з рікоттою та цукатами, обсмажені у фритюрі.",
       "price": 95,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47722.png"
@@ -46,6 +55,7 @@ const dessertsData = {
       "description": "Кулька ванільного морозива, що плаває в гарячому еспресо.",
       "price": 80,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47723.png"
@@ -56,6 +66,7 @@ const dessertsData = {
       "description": "Легкий італійський заварний крем з вином Марсала.",
       "price": 120,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47724.png"
@@ -66,6 +77,7 @@ const dessertsData = {
       "description": "Ніжний бісквіт з лимонним кремом та цукровою пудрою.",
       "price": 105,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47725.png"
@@ -76,6 +88,7 @@ const dessertsData = {
       "description": "М'які венеціанські пончики з родзинками, обсмажені у фритюрі.",
       "price": 90,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47726.png"
@@ -86,6 +99,7 @@ const dessertsData = {
       "description": "Традиційний італійський рулет з яблуками та корицею.",
       "price": 140,
       "category": {
+        "_id": "6852a508b459460cb6b47714",
         "name": "Італійські десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47727.png"
@@ -96,6 +110,7 @@ const dessertsData = {
       "description": "Класичний десерт з рідким шоколадним центром.",
       "price": 120,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47728.png"
@@ -106,6 +121,7 @@ const dessertsData = {
       "description": "Теплий, хрусткий штрудель з ароматною яблучною начинкою.",
       "price": 110,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47729.png"
@@ -116,6 +132,7 @@ const dessertsData = {
       "description": "Хрусткі смажені палички з тіста, подаються з теплим шоколадним соусом.",
       "price": 90,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772a.png"
@@ -126,6 +143,7 @@ const dessertsData = {
       "description": "Соковитий шоколадний пиріг, подається теплим з кулькою ванільного морозива.",
       "price": 145,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772b.png"
@@ -136,6 +154,7 @@ const dessertsData = {
       "description": "Розрізаний банан, поданий з кулькою морозива, гарячим шоколадним сиропом та горіхами.",
       "price": 130,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772c.png"
@@ -146,6 +165,7 @@ const dessertsData = {
       "description": "Ароматний гарячий напій з червоного вина, спецій та фруктів.",
       "price": 85,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772d.png"
@@ -156,6 +176,7 @@ const dessertsData = {
       "description": "Теплі лісові ягоди, подані з ніжним кремом маскарпоне.",
       "price": 100,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772e.png"
@@ -166,6 +187,7 @@ const dessertsData = {
       "description": "Насичений шоколадний пудинг, що подається теплим.",
       "price": 95,
       "category": {
+        "_id": "6852a508b459460cb6b47715",
         "name": "Гарячі десерти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4772f.png"
@@ -176,6 +198,7 @@ const dessertsData = {
       "description": "Легкі заварні тістечка, наповнені ніжним кремом.",
       "price": 95,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47730.png"
@@ -186,6 +209,7 @@ const dessertsData = {
       "description": "Довгі заварні тістечка з ванільним кремом.",
       "price": 85,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47731.png"
@@ -196,6 +220,7 @@ const dessertsData = {
       "description": "Довгі заварні тістечка з шоколадним кремом.",
       "price": 85,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47732.png"
@@ -206,6 +231,7 @@ const dessertsData = {
       "description": "Заварне кільце, наповнене легким праліновим кремом.",
       "price": 110,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47733.png"
@@ -216,6 +242,7 @@ const dessertsData = {
       "description": "Невелика порція традиційного французького десерту з карамелізованих профітролів.",
       "price": 160,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47734.png"
@@ -226,6 +253,7 @@ const dessertsData = {
       "description": "Круглі заварні тістечка з різноманітними начинками.",
       "price": 75,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47735.png"
@@ -236,6 +264,7 @@ const dessertsData = {
       "description": "Традиційний торт з вишнями та сметанним кремом.",
       "price": 130,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47736.png"
@@ -246,6 +275,7 @@ const dessertsData = {
       "description": "Класичний багатошаровий торт з листкового тіста та крему.",
       "price": 140,
       "category": {
+        "_id": "6852a508b459460cb6b47716",
         "name": "Заварні тістечка"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47737.png"
@@ -256,6 +286,7 @@ const dessertsData = {
       "description": "Вершковий чизкейк на пісочній основі.",
       "price": 150,
       "category": {
+        "_id": "6852a508b459460cb6b47717",
         "name": "Класичні торти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47738.png"
@@ -266,6 +297,7 @@ const dessertsData = {
       "description": "Знаменитий торт з повітряно-горіховими коржами та масляним кремом.",
       "price": 180,
       "category": {
+        "_id": "6852a508b459460cb6b47717",
         "name": "Класичні торти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b47739.png"
@@ -276,6 +308,7 @@ const dessertsData = {
       "description": "Австрійський шоколадний торт з абрикосовим конфітюром.",
       "price": 160,
       "category": {
+        "_id": "6852a508b459460cb6b47717",
         "name": "Класичні торти"
       },
       "image": "https://ftp.goit.study/img/deserts/6852a9fcb459460cb6b4773a.png"
@@ -285,3 +318,5 @@ const dessertsData = {
   "page": 1,
   "limit": 27
 }
+
+export default dessertsData;

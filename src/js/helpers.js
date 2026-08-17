@@ -18,10 +18,24 @@ export function setElementVisible(selectorOrElement, visible) {
   }
 }
 
-function getElement(selectorOrElement) {
+export function getElement(selectorOrElement) {
   if (!selectorOrElement) return;
 
   const isString = (typeof selectorOrElement === 'string');
   
   return isString ? document.querySelector(selectorOrElement) : selectorOrElement;
+}
+
+export function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, char => {
+    const entities = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    };
+
+    return entities[char];
+  });
 }

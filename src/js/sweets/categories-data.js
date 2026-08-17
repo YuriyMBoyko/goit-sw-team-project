@@ -1,4 +1,8 @@
-export default [
+export async function fetchCategories() {
+  return categoriesData;
+}
+
+const categoriesData = [
   {
     "_id": "6852a508b459460cb6b47714",
     "name": "Італійські десерти"
@@ -40,3 +44,5 @@ export default [
     "name": "Шоколадні випічки"
   }
 ]
+
+export default categoriesData;

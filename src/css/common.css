@@ -59,8 +59,8 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 160%;
-  text-wrap: nowrap;
   color: var(--color-neutral-darkest);
+  text-wrap: nowrap;
   transition:
     border var(--transition-100),
     background-color var(--transition-100),
@@ -104,6 +104,13 @@
   height: 40px;
 }
 
+.button-primary-icon svg,
+.button-primary-icon-small svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-neutral-darkest);
+}
+
 .button-secondary,
 .button-secondary-small,
 .button-secondary-icon,
@@ -119,6 +126,7 @@
   line-height: 150%;
   color: var(--color-neutral-darkest);
   background-color: var(--color-scheme-1-background);
+  text-wrap: nowrap;
   transition:
     background-color var(--transition),
     opacity var(--transition);

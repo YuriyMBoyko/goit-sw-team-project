@@ -12,18 +12,28 @@ const refs = {
 
 let currentDessertId = null;
 
+document.addEventListener('DOMContentLoaded', () => {
+  if (!refs.overlay) return;
+
+  refs.closeBtn.addEventListener('click', closeOrderModal);
+
+  refs.overlay.addEventListener('click', event => {
+    if (event.target === refs.overlay) closeOrderModal();
+  });
+
+  refs.form.addEventListener('submit', handleSubmit);
+});
+
 export function openOrderModal(dessertId) {
   if (!refs.overlay) return;
   currentDessertId = dessertId;
-  refs.overlay.hidden = false;
-  document.body.style.overflow = 'hidden';
+  refs.overlay.classList.toggle('is-open', true);
   document.addEventListener('keydown', handleEscape);
 }
 
 function closeOrderModal() {
   if (!refs.overlay) return;
-  refs.overlay.hidden = true;
-  document.body.style.overflow = '';
+  refs.overlay.classList.toggle('is-open', false);
   document.removeEventListener('keydown', handleEscape);
 }
 
@@ -105,15 +115,3 @@ async function handleSubmit(event) {
     });
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (!refs.overlay) return;
-
-  refs.closeBtn.addEventListener('click', closeOrderModal);
-
-  refs.overlay.addEventListener('click', event => {
-    if (event.target === refs.overlay) closeOrderModal();
-  });
-
-  refs.form.addEventListener('submit', handleSubmit);
-});

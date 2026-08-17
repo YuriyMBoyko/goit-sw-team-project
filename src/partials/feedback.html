@@ -1,12 +1,30 @@
 <section class="feedback" id="feedback">
-  <div class="feedback-container container">
+  <div class="container feedback-container">
     <div class="feedback-title-wrapper">
       <h2 class="feedback-title">Відгуки клієнтів</h2>
       <p class="feedback-title-text">Найкращі десерти, які я коли-небудь куштував!</p>
     </div>
-    <div class="feedback-wrapper">
-      <ul class="feedback-list feedback-data-container"></ul>
+    <div class="feedback-slider-wrapper">
+      <div class="feedback-slider">
+        <div class="swiper feedback-swiper">
+          <ul class="swiper-wrapper feedback-list feedback-data-container"></ul>
+        </div>
+<!--        <div class="feedback-swiper-controls"> -->
+        <div class="feedback-navigation-wrapper">
+          <button class="slider-arrow feedback-slider-arrow feedback-swiper-button-prev" type="button">
+            <svg>
+              <use href="./img/icons.svg#arrow-back"></use>
+            </svg>
+          </button>
+          <button class="slider-arrow feedback-slider-arrow feedback-swiper-button-next" type="button">
+            <svg>
+              <use href="./img/icons.svg#arrow-forward"></use>
+            </svg>
+          </button>
+        </div>
+<!--        </div> -->
       </div>
+      <div class="feedback-swiper-pagination"></div>
     </div>
   </div>
 </section>
