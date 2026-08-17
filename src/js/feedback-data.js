@@ -1,4 +1,8 @@
-export default {
+export async function fetchFeedbackData() {
+  return feedbackData;
+}
+
+const feedbackData = {
   "feedbacks": [
     {
       "_id": "6854873d82d4e3521f90a269",
@@ -65,3 +69,5 @@ export default {
   "page": "1",
   "limit": "10"
 }
+
+export default feedbackData;
