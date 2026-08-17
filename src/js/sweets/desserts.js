@@ -1,12 +1,14 @@
-import { ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
+import { ITEMS_PER_PAGE, CLASS_NAMES, refs, state } from './sweets-consts.js';
 import spriteUrl from '../../img/icons.svg';
 import { setElementVisible } from '../helpers.js';
 import { fetchDessertsByCategory } from './desserts-data.js';
+import { openOrderModal } from '../order-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadDessertsByCategory();
 
   refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
+  refs.productList.addEventListener('click', handleProductClick);
 });
 
 export async function loadDessertsByCategory(category = '', page = 1) {
@@ -147,4 +149,15 @@ function showLoadMoreButton() {
   if (refs.loadMoreButton) {
     setElementVisible(refs.loadMoreButton, true);
   }
+}
+
+function handleProductClick(event) {
+  let clicked = event.target;  
+  if (!clicked) return;
+
+  clicked = clicked.closest(`.${CLASS_NAMES.PRODUCT_OPEN_DETAIL}`);
+  if (!clicked) return
+
+  console.log(clicked);
+  openOrderModal(clicked.dataset.Id);
 }
