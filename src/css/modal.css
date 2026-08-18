@@ -146,7 +146,7 @@
 
 .modal-form-input-error,
 .modal-form-textarea-error {
-  display: block;
+  display: none;
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
@@ -158,7 +158,12 @@
   color: var(--color-red);
 }
 
-.modal-form-submit {
+.modal-form-input.is-invalid + .modal-form-input-error,
+.modal-form-textarea.is-invalid + .modal-form-textarea-error {
+  display: block;
+}
+
+  .modal-form-submit {
   width: 100%;
 }
 

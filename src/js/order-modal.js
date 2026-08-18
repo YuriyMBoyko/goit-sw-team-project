@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 export function openOrderModal(dessertId) {
   if (!refs.overlay) return;
+
   currentDessertId = dessertId;
   refs.overlay.classList.toggle('is-open', true);
   document.addEventListener('keydown', handleEscape);
@@ -39,11 +40,15 @@ export function openOrderModal(dessertId) {
 function closeOrderModal() {
   if (!refs.overlay) return;
   refs.overlay.classList.toggle('is-open', false);
+
   document.removeEventListener('keydown', handleEscape);
 
   refs.nameInput.removeEventListener('input', handleNameValidation);
   refs.phoneInput.removeEventListener('input', handlePhoneValidation);
   refs.commentInput.removeEventListener('input', handleCommentValidation);
+
+  refs.form.reset();
+  document.querySelectorAll(`.${CSS_CLASSES.IS_INVALID}`).forEach((element) => element.classList.remove(CSS_CLASSES.IS_INVALID));
 }
 
 function handleEscape(event) {
