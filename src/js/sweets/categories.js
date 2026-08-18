@@ -24,7 +24,7 @@ async function loadCategories() {
 
   try {
     state.loading = true;
-    showLoader(refs.categoryLoader);
+    showLoader(refs.productLoader);
   
     renderCategories();
     clearDesserts();
@@ -46,7 +46,7 @@ async function loadCategories() {
     console.log(error);
     showError(`${STRINGS.ERROR_LOAD_CATEGORIES}<br/><br/>${error}`);
   } finally {
-    hideLoader(refs.categoryLoader);
+    hideLoader(refs.productLoader);
     state.loading = false;
   }
 }
