@@ -1,5 +1,5 @@
-import { CLASS_NAMES, ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
 import spriteUrl from '../../img/icons.svg';
+import { CLASS_NAMES, ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
 import { setElementVisible } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
@@ -88,31 +88,66 @@ function renderDessertsData(selectorOrElement, data, append = false) {
   }
 }
 
-function createDessertsMarkup(data) {
-  if (!data || !Array.isArray(data)) return '';
+export function createDessertsMarkup( data, { swiperSlide = false } = {}
+) {
+  if (!Array.isArray(data)) return '';
 
-  return data.map(({ _id, name, description, price, category, image }) => `
-    <li class="sweets-item" data-id="${_id}">
-      <img class="sweets-item-image" src="${image}" alt="${name}"/>
-      <div class="sweets-item-content">
-        <div class="sweets-item-info" >
-          <p class="sweets-item-category">${category.name}</p>
-          <div class="sweets-item-description-wrapper">
-            <h3 class="sweets-item-title">${name}</h3>
-            <p class="sweets-item-description">${description}</p>
+  return data
+    .map(
+      ({ _id, name, description, price, category, image }) => `
+        <li
+          class="sweets-item${
+            swiperSlide ? ' swiper-slide popular-products-item' : ''
+          }"
+          data-id="${_id}"
+        >
+          <img
+            class="sweets-item-image"
+            src="${image}"
+            alt="${name}"
+          />
+
+          <div class="sweets-item-content">
+            <div class="sweets-item-info">
+              <p class="sweets-item-category">
+                ${category.name}
+              </p>
+
+              <div class="sweets-item-description-wrapper">
+                <h3 class="sweets-item-title">
+                  ${name}
+                </h3>
+
+                <p class="sweets-item-description">
+                  ${description}
+                </p>
+              </div>
+            </div>
+
+            <div class="sweets-item-price-wrapper">
+              <p class="sweets-item-price">
+                ${price} грн
+              </p>
+
+              <button
+                class="button-secondary-icon sweets-item-open-details-button"
+                type="button"
+                data-id="${_id}"
+                aria-label="Відкрити детальну інформацію"
+              >
+                <svg
+                  class="sweets-item-open-details-button-icon"
+                  aria-hidden="true"
+                >
+                  <use href="${spriteUrl}#arrow-outward"></use>
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="sweets-item-price-wrapper">
-          <p class="sweets-item-price">${price} грн</p>
-          <button class="button-secondary-icon sweets-item-open-details-button" type="button" data-id="${_id}" aria-label="Відкрити детальну інформацію">
-            <svg class="sweets-item-open-details-button-icon">
-              <use href="${spriteUrl}#arrow-outward"></use>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </li>
-  `).join('');
+        </li>
+      `
+    )
+    .join('');
 }
 
 async function handleLoadMoreButtonClick(event) {

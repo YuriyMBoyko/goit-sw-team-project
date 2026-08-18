@@ -4,3 +4,4 @@ import './js/order-modal.js';
 import './js/about.js';
 import './js/feedback.js';
 import './js/faq.js';
+import './js/popular-products.js';
