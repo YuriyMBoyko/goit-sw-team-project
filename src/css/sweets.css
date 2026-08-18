@@ -47,6 +47,7 @@
 }
 
 .sweets-category-name {
+  display: block;
   position: relative;
   font-family: var(--font-family);
   font-weight: 400;
