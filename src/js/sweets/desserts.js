@@ -7,7 +7,7 @@ import { showLoader, hideLoader, showError } from '../helpers.js';
 import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadDessertsByCategory();
+  hideLoadMoreButton();
 
   refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
   refs.productList.addEventListener('click', handleProductClick);
@@ -42,8 +42,8 @@ export async function loadDessertsByCategory(category = '', page = 1) {
       }
 
     } finally {
+      hideLoader(refs.productLoader);
       state.loading = false;
-      hideLoader(refs.producLoader);
     }
   }
 }

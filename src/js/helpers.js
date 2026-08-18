@@ -3,6 +3,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 import Swal from 'sweetalert2';
 import { CSS_CLASSES, STRINGS } from './consts.js';
 
+export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export function toggleElementVisible(selectorOrElement) {
   const element = getElement(selectorOrElement);
 

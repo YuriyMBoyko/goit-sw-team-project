@@ -1,6 +1,6 @@
 import { postOrder } from './api.js';
 import { CSS_CLASSES } from './consts.js';
-import { getElement, showOrderSuccess, showError } from './helpers.js';
+import { getElement, showOrderSuccess, showError, showLoader, hideLoader } from './helpers.js';
 
 const refs = {
   overlay: document.querySelector('[data-order-modal-overlay]'),
@@ -9,6 +9,7 @@ const refs = {
   nameInput: document.querySelector('[data-order-name]'),
   phoneInput: document.querySelector('[data-order-phone]'),
   commentInput: document.querySelector('[data-order-comment]'),
+  orderLoader: document.querySelector('#order-modal-loader'),
 };
 
 let currentDessertId = null;
@@ -156,6 +157,8 @@ async function handleSubmit(event) {
   if (!validateForm(orderData)) return;
 
   try {
+
+/*    if (refs.orderLoader) showLoader(refs.orderLoader);*/
     postOrder(orderData)
       .then(({ orderNum }) => {
         showOrderSuccess(orderNum);
@@ -166,8 +169,10 @@ async function handleSubmit(event) {
       })
       .finally(() => {
         event.target.reset();
+        if (refs.orderLoader) hideLoader(refs.orderLoader);
       })
   } catch (error) {
+/*    if (refs.orderLoader) hideLoader(refs.orderLoader);*/
     showError(`Щось пішло не так<br/><br/>${error}`);
   }
 }
