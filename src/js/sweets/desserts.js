@@ -143,7 +143,6 @@ function handleProductClick(event) {
   clicked = clicked.closest(`.${CLASS_NAMES.PRODUCT_OPEN_DETAIL}`);
   if (!clicked) return
 
-  console.log(clicked);
   const productId = clicked.dataset.id;
   openProductModal(productId);
 }
