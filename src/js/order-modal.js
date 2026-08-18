@@ -154,7 +154,10 @@ async function handleSubmit(event) {
     comment: refs.commentInput.value.trim(),
   };
 
-  if (!validateForm(orderData)) return;
+  if (!validateForm(orderData)) {
+    document.querySelector('.order-form-submit')?.blur();
+    return;
+  }
 
   try {
 
