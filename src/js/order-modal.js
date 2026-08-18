@@ -28,73 +28,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 export function openOrderModal(dessertId) {
   if (!refs.overlay) return;
+
   currentDessertId = dessertId;
   refs.overlay.classList.toggle('is-open', true);
   document.addEventListener('keydown', handleEscape);
+
+  refs.nameInput.addEventListener('input', handleNameValidation);
+  refs.phoneInput.addEventListener('input', handlePhoneValidation);
+  refs.commentInput.addEventListener('input', handleCommentValidation);
 }
 
 function closeOrderModal() {
   if (!refs.overlay) return;
   refs.overlay.classList.toggle('is-open', false);
+
   document.removeEventListener('keydown', handleEscape);
+
+  refs.nameInput.removeEventListener('input', handleNameValidation);
+  refs.phoneInput.removeEventListener('input', handlePhoneValidation);
+  refs.commentInput.removeEventListener('input', handleCommentValidation);
+
+  refs.form.reset();
+  document.querySelectorAll(`.${CSS_CLASSES.IS_INVALID}`).forEach((element) => element.classList.remove(CSS_CLASSES.IS_INVALID));
 }
 
 function handleEscape(event) {
   if (event.key === 'Escape') closeOrderModal();
 }
 
-function validateName(name) {
-/*  
-  const namePattern = /^[a-zA-Z\s\.]{5,28}$/;
-  return namePattern.test(name);
-*/
+function isNameValid(name) {
   return (name.length >= 5) && (name.length <= 28);
 }
 
-function validatePhone(phone) {
+function validateName(selectorOrElement, name) {
+  const isValid = isNameValid(name);
+  showOrderError(selectorOrElement, (!isValid) ? 'Ім\'я має містити від 5 до 28 символів' : '');
+  return isValid;
+}
+
+function isPhoneValid(phone) {
   const phonePattern = /^380\d{9}$/;
   return phonePattern.test(phone);
 }
 
-function validateComment(comment) {
+function validatePhone(selectorOrElement, phone) {
+  const isValid = isPhoneValid(phone);
+  showOrderError(selectorOrElement, (!isValid) ? 'Номер телефону повинен містити 12 цифр' : '');
+  return isValid;
+}
+
+function isCommentValid(comment) {
   return (comment.length >= 10) && (comment.length <= 256);
 }
 
+function validateComment(selectorOrElement, comment) {
+  const isValid = isCommentValid(comment);
+  showOrderError(selectorOrElement, (!isValid) ? 'Коментар повинен містити від 10 до 256 символів' : '');
+  return isValid;
+}
+
 function validateForm({ name, phone, comment }) {
-
-  console.log(
-    'validateForm called: name:',
-    name,
-    'phone:',
-    phone,
-    'comment',
-    comment
-  );
-
   let isValid = true;
 
-  if (validateName(name)) {
-    hideOrderError(refs.nameInput);
-  } else {
-    showOrderError(refs.nameInput, 'Ім\'я має містити від 5 до 28 символів');
+  if (!validateName(refs.nameInput, name)) {
     isValid = false;
   }
 
-  if (validatePhone(phone)) {
-    hideOrderError(refs.phoneInput);
-  } else {
-    showOrderError(refs.phoneInput, 'Номер телефону повинен містити 12 цифр');
-    isValie = false;
-  }
-
-  if (validateComment(comment)) {
-    hideOrderError(refs.commentInput);
-  } else {
-    showOrderError(refs.commentInput, 'Коментар повинен містити від 10 до 256 символів');
+  if (!validatePhone(refs.phoneInput, phone)) {
     isValid = false;
   }
 
-  console.log('validateForm result:', isValid);
+  if (!validateComment(refs.commentInput, comment)) {
+    isValid = false;
+  }
+
   return isValid;
 }
 
@@ -102,7 +109,7 @@ function showOrderError(selectorOrElement, message) {
   const element = getElement(selectorOrElement);
 
   if (element) {
-    element.classList.toggle(CSS_CLASSES.IS_INVALID, true);
+    element.classList.toggle(CSS_CLASSES.IS_INVALID, (message.length !== 0));
     showOrderErrorMessage(element, message);
   }
 }
@@ -115,11 +122,26 @@ function hideOrderError(selectorOrElement) {
   }
 }
 
-function showOrderErrorMessage(elementOrSelector, message) {
-  const element = getElement(elementOrSelector);
+function showOrderErrorMessage(selectorOrElement, message) {
+  const element = getElement(selectorOrElement);
   if (element) {
-    element.dataset.errorMessage = message;
+    const nextElement = element.nextElementSibling;
+    if (nextElement && nextElement.matches('.order-form-error')) {
+      nextElement.textContent = message;
+    }
   }
+}
+
+function handleNameValidation(event) {
+  validateName(refs.nameInput, event.target.value.trim());
+}
+
+function handlePhoneValidation(event) {
+  validatePhone(refs.phoneInput, event.target.value.trim());
+}
+
+function handleCommentValidation(event) {
+  validateComment(refs.commentInput, event.target.value.trim());
 }
 
 async function handleSubmit(event) {

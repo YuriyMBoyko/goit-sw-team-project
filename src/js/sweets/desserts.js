@@ -4,7 +4,6 @@ import { setElementVisible } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
 import { showLoader, hideLoader, showError } from '../helpers.js';
-/*import { fetchDessertsByCategory } from './desserts-data.js';*/
 import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -144,7 +143,6 @@ function handleProductClick(event) {
   clicked = clicked.closest(`.${CLASS_NAMES.PRODUCT_OPEN_DETAIL}`);
   if (!clicked) return
 
-  console.log(clicked);
   const productId = clicked.dataset.id;
   openProductModal(productId);
 }

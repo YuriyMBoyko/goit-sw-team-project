@@ -3,7 +3,6 @@ import { CLASS_NAMES, ALL_CATEGORIES, refs, state } from './sweets-consts.js';
 import { clearDesserts, loadDessertsByCategory } from './desserts.js';
 import { showLoader, hideLoader, showError, escapeHtml } from '../helpers.js';
 import { fetchCategories } from '../api.js';
-/*import { fetchCategories } from './categories-data.js';*/
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!refs.categoryList) return;
@@ -43,7 +42,6 @@ async function loadCategories() {
     state.clickedCategoryId = firstBtn?.dataset.categoryId;
     await loadDessertsByCategory(state.clickedCategoryId || '', 1);
 
-/*    initProductModal(refs.productsList);*/
   } catch(error) {
     console.log(error);
     showError(`${STRINGS.ERROR_LOAD_CATEGORIES}<br/><br/>${error}`);
@@ -74,7 +72,7 @@ async function handleCategoryClick(event) {
   const clicked = event.target;  
   if (!clicked || !clicked.classList.contains(CLASS_NAMES.CATEGORY_BUTTON) || clicked.classList.contains(CSS_CLASSES.IS_ACTIVE)) return;
 
-  document.querySelector(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CSS_CLASSES.IS_ACTIVE}`)?.classList.remove(CSS_CLASSES.IS_ACTIVE);
+  document.querySelectorAll(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CSS_CLASSES.IS_ACTIVE}`).forEach((button) => button.classList.remove(CSS_CLASSES.IS_ACTIVE));
 
   setDropdownOpen(false);
   setDropdownName(clicked.dataset.categoryName);
