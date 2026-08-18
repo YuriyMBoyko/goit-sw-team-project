@@ -56,15 +56,7 @@ export function showError(message, isHtml = false) {
     messageHtml: isHtml,
   });
 }
-/*
-export function showOrderError(message) {
-  Swal.fire({
-    icon: 'error',
-    title: 'Помилка',
-    text: message,
-  });
-}
-*/
+
 export function showOrderSuccess(orderNum) {
   Swal.fire({
     icon: 'success',

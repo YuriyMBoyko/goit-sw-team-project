@@ -43,10 +43,6 @@ function handleEscape(event) {
 }
 
 function validateName(name) {
-/*  
-  const namePattern = /^[a-zA-Z\s\.]{5,28}$/;
-  return namePattern.test(name);
-*/
   return (name.length >= 5) && (name.length <= 28);
 }
 
