@@ -44,7 +44,7 @@ export async function loadDessertsByCategory(category = '', page = 1) {
 
     } finally {
       state.loading = false;
-      hideLoader(refs.producLoader);
+      hideLoader(refs.productLoader);
     }
   }
 }

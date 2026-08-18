@@ -15,6 +15,8 @@ export const refs = {
   categoryDropDownName: document.querySelector('.sweets-category-name'),
   productList: document.querySelector('.sweets-list'),
   loadMoreButton: document.querySelector('.sweets-load-more-button'),
+  categoryLoader: document.querySelector('#category-loader'),
+  productLoader: document.querySelector('#product-loader'),
 }
 
 export const state = {
