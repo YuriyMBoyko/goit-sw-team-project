@@ -4,7 +4,6 @@ import { setElementVisible } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
 import { showLoader, hideLoader, showError } from '../helpers.js';
-/*import { fetchDessertsByCategory } from './desserts-data.js';*/
 import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -3,7 +3,6 @@ import { CLASS_NAMES, ALL_CATEGORIES, refs, state } from './sweets-consts.js';
 import { clearDesserts, loadDessertsByCategory } from './desserts.js';
 import { showLoader, hideLoader, showError, escapeHtml } from '../helpers.js';
 import { fetchCategories } from '../api.js';
-/*import { fetchCategories } from './categories-data.js';*/
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!refs.categoryList) return;
@@ -43,7 +42,6 @@ async function loadCategories() {
     state.clickedCategoryId = firstBtn?.dataset.categoryId;
     await loadDessertsByCategory(state.clickedCategoryId || '', 1);
 
-/*    initProductModal(refs.productsList);*/
   } catch(error) {
     console.log(error);
     showError(`${STRINGS.ERROR_LOAD_CATEGORIES}<br/><br/>${error}`);

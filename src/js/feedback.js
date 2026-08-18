@@ -9,7 +9,6 @@ import { showLoader, hideLoader, showError } from './helpers.js';
 import { fetchFeedbacks } from './api.js';
 import spriteUrl from '../img/star-rating.icons.svg';
 /*import { buildStarRatingMarkup } from './feedback-stars.js';*/
-/*import { fetchFeedbacks } from './feedback-data.js';*/
 
 const refs = {
   feedbackContainer: document.querySelector('.feedback-data-container'),
@@ -114,10 +113,6 @@ function initFeedbackSwiper() {
       el: '.feedback-swiper-pagination',
       type: 'bullets',
       clickable: true,
-/*      
-      dynamicBullets: true,
-      dynamicMainBullets: 6,
-*/      
     },
 
     keyboard: {
