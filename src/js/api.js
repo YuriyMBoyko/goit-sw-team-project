@@ -12,7 +12,7 @@ const ApiMethods = [
 axios.defaults.baseURL = ApiBaseURL;
 
 export async function fetchCategories() {
-  await await sleepToTest();
+   await sleepToTest();
 
   const response = await axios.get(ApiMethods[0]);
   return response.data;
@@ -36,8 +36,6 @@ export async function fetchDessertsByCategory(category, page = 1, limit = 10) {
 }
 
 export async function fetchDessert(id) {
-  await sleepToTest();
-
   const response = await axios.get(`${ApiMethods[1]}/${id}`);
   return response.data;
 }
