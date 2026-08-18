@@ -72,7 +72,7 @@ async function handleCategoryClick(event) {
   const clicked = event.target;  
   if (!clicked || !clicked.classList.contains(CLASS_NAMES.CATEGORY_BUTTON) || clicked.classList.contains(CSS_CLASSES.IS_ACTIVE)) return;
 
-  document.querySelector(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CSS_CLASSES.IS_ACTIVE}`)?.classList.remove(CSS_CLASSES.IS_ACTIVE);
+  document.querySelectorAll(`.${CLASS_NAMES.CATEGORY_BUTTON}.${CSS_CLASSES.IS_ACTIVE}`).forEach((button) => button.classList.remove(CSS_CLASSES.IS_ACTIVE));
 
   setDropdownOpen(false);
   setDropdownName(clicked.dataset.categoryName);
