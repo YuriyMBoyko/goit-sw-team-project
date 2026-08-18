@@ -7,8 +7,8 @@ import 'css-star-rating/css/star-rating.css';
 import { STRINGS } from './consts.js';
 import { showLoader, hideLoader, showError } from './helpers.js';
 import { fetchFeedbacks } from './api.js';
-import spriteUrl from '../img/star-rating.icons.svg';
-/*import { buildStarRatingMarkup } from './feedback-stars.js';*/
+/*import spriteUrl from '../img/star-rating.icons.svg';*/
+import { buildStarRatingMarkup } from './feedback-stars.js';
 
 const refs = {
   feedbackContainer: document.querySelector('.feedback-data-container'),
@@ -122,7 +122,7 @@ function initFeedbackSwiper() {
     }
   });
 }
-
+/*
 function buildStarRatingMarkup(rate) {
 
   const { rateIntValue, rateIsHalf } = rateNormalize(rate);
@@ -160,3 +160,4 @@ function rateNormalize(value) {
     rateIsHalf: (rate % 10) >= 5
   };
 }
+*/
