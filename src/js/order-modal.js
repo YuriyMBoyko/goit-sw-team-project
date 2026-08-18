@@ -158,7 +158,7 @@ async function handleSubmit(event) {
 
   try {
 
-    if (refs.orderLoader) showLoader(refs.orderLoader);
+/*    if (refs.orderLoader) showLoader(refs.orderLoader);*/
     postOrder(orderData)
       .then(({ orderNum }) => {
         showOrderSuccess(orderNum);
@@ -172,7 +172,7 @@ async function handleSubmit(event) {
         if (refs.orderLoader) hideLoader(refs.orderLoader);
       })
   } catch (error) {
-    if (refs.orderLoader) hideLoader(refs.orderLoader);
+/*    if (refs.orderLoader) hideLoader(refs.orderLoader);*/
     showError(`Щось пішло не так<br/><br/>${error}`);
   }
 }

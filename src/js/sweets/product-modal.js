@@ -28,10 +28,10 @@ export async function openProductModal(productId) {
   backdrop = document.getElementById('product-modal-backdrop');
   if (backdrop) backdrop.removeAttribute('hidden');
   document.body.style.overflow = 'hidden'; 
-
+/*
   const modalLoader = document.getElementById('product-modal-loader');
   if (modalLoader) showLoader(modalLoader);
-  
+*/  
   try {
     const productData = await fetchDessert(productId);
 
@@ -70,7 +70,7 @@ export async function openProductModal(productId) {
       document.body.style.overflow = '';
     }
   } finally {
-    if (modalLoader) hideLoader(modalLoader);
+/*    if (modalLoader) hideLoader(modalLoader);*/
   }
 }
 

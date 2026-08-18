@@ -1,11 +1,8 @@
 .loader-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  display: flex;
+  height: 64px;
+  background-color: var(--color-scheme-1-background);
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 999;
@@ -17,12 +14,13 @@
 .loader-overlay.is-open {
   opacity: 1;
   visibility: visible;
+  display: flex;
 }
 
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #ff6b6b;
+  border: 5px solid var(--color-wewak);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;

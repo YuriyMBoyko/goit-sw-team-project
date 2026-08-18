@@ -5,7 +5,7 @@
         <h2 class="sweets-title">Солодощі</h2>
         <p class="sweets-title-text">Спробуйте наші смачні десерти, які вас здивують!</p>
       </div>
-      <div class="sweets-category-dropdown-container" style="position: relative;">
+      <div class="sweets-category-dropdown-container">
         <button class="sweets-category-dropdown" type="button">
           <p class="sweets-category-name"></p>
           <svg class="sweets-category-dropdown-icon">
@@ -20,14 +20,12 @@
       </div>
     </div>
 
-    <div class="sweets-list-wrapper" style="position: relative; min-height: 200px;">
-      <ul class="sweets-list"></ul>
-      
-      <div class="loader-overlay" id="product-loader">
-        <span class="loader"></span>
-      </div>
+    <ul class="sweets-list"></ul>
+    
+    <div class="loader-overlay" id="product-loader">
+      <span class="loader"></span>
     </div>
 
-    <button class="button-primary sweets-load-more-button" type="button">Завантажити ще</button>
+    <button class="button-primary sweets-load-more-button hidden" type="button">Завантажити ще</button>
   </div>
 </section>
