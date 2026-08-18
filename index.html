@@ -8,7 +8,7 @@
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-E_A9zYq_.js">
     <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BSfqrMAl.css">
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-CZ6ndZee.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-5p9UY1YN.css">
   </head>
   <body>
     <header class="header">
@@ -76,10 +76,20 @@
           </svg>
         </button>
         <ul class="sweets-category-list"></ul>
+        
+        <div class="loader-overlay" id="category-loader">
+          <span class="loader"></span>
+        </div>
       </div>
     </div>
+
     <ul class="sweets-list"></ul>
-    <button class="button-primary sweets-load-more-button" type="button">Завантажити ще</button>
+    
+    <div class="loader-overlay" id="product-loader">
+      <span class="loader"></span>
+    </div>
+
+    <button class="button-primary sweets-load-more-button hidden" type="button">Завантажити ще</button>
   </div>
 </section>
       <section class="about" id="about">
@@ -218,7 +228,7 @@
       <h2 class="feedback-title">Відгуки клієнтів</h2>
       <p class="feedback-title-text">Найкращі десерти, які я коли-небудь куштував!</p>
     </div>
-    <div class="feedback-slider-wrapper">
+    <div class="feedback-slider-wrapper" style="position: relative;">
       <div class="feedback-slider">
         <div class="swiper feedback-swiper">
           <ul class="swiper-wrapper feedback-list feedback-data-container"></ul>
@@ -237,6 +247,11 @@
         </div>
       </div>
       <div class="feedback-swiper-pagination"></div>
+
+      <div class="loader-overlay feedback-loader-container">
+        <span class="loader"></span>
+      </div>
+      
     </div>
   </div>
 </section>
@@ -361,7 +376,7 @@
 
     <div class="backdrop" id="product-modal-backdrop" hidden>
   
-  <article class="modal-card">
+  <article class="modal-card" style="position: relative;">
     
     <div class="modal-image-thumb">
       <button class="modal-close-btn" id="close-modal-btn" type="button" aria-label="Закрити вікно">
@@ -390,11 +405,15 @@
       <button class="button-primary modal-action-btn" id="order-button" type="button">Перейти до замовлення</button>
     </div>
     
+    <div class="loader-overlay" id="product-modal-loader">
+      <span class="loader"></span>
+    </div>
+
   </article>
 
 </div>
     <div class="modal-backdrop order-modal-overlay" data-order-modal-overlay>
-  <div class="modal-window order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+  <div class="modal-window order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title" style="position: relative;">
     <button class="modal-close-button order-modal-close" type="button" aria-label="Закрити" data-order-modal-close>
       <svg width="24" height="24">
         <use href="/goit-sw-team-project/assets/icons-Cdyo7Dv1.svg#close"></use>
@@ -419,9 +438,13 @@
 
       <button class="button-primary modal-form-submit order-form-submit" type="submit">Надіслати заявку</button>
     </form>
+
+    <div class="loader-overlay" id="order-modal-loader">
+      <span class="loader"></span>
+    </div>
+    
   </div>
 </div>
-
 
   </body>
 </html>
