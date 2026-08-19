@@ -54,8 +54,15 @@ export function showError(message, isHtml = false) {
 export function showOrderSuccess(orderNum) {
   Swal.fire({
     icon: 'success',
-    title: 'Успіх',
-    text: `${STRINGS.NOTIFY_OREDER_RECEIVED} ${orderNum || '---'}`,
+    title: 'Готово!',
+    html: `${STRINGS.NOTIFY_OREDER_RECEIVED} ${orderNum || '---'}`,
+    confirmButtonText: 'У Р А',
+    customClass: {
+      popup: 'dialog-alert-background',
+      title: 'dialog-alert-title',
+      htmlContainer: 'dialog-alert-html',
+      confirmButton: 'button-secondary dialog-alert-confirm-button',
+    },
   })
 }
 

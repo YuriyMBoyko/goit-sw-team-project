@@ -31,7 +31,7 @@
   max-width: 335px;
   max-height: 90vh;
   background-color: var(--color-scheme-1-background);
-  border-radius: 24px;
+  border-radius: 16px;
   padding: 64px 20px;
   display: flex;
   flex-direction: column;
@@ -184,6 +184,8 @@
   .modal-window {
     width: 768px;
     max-width: 768px;
+    padding-left: 64px;
+    padding-right: 64px;
   }
 
   .modal-form-submit {
