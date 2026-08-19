@@ -78,6 +78,11 @@
 }
 
 .footer-credits-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
@@ -85,6 +90,10 @@
   text-align: center;
   text-wrap: nowrap;
   color: var(--color-scheme-3-text);
+}
+
+.footer-credits-text span {
+  display: block;
 }
 
 @media screen and (min-width: 768px) {
