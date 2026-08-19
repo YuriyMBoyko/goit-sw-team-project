@@ -10,6 +10,7 @@ export const CLASS_NAMES = {
 export const ALL_CATEGORIES = Object.freeze({ _id: '', name: 'Всі десерти' });
 
 export const refs = {
+  sweetsContainer: document.querySelector('.sweets-container'),
   categoryList: document.querySelector('.sweets-category-list'),
   categoryDropDown: document.querySelector(`.${CLASS_NAMES.CATEGORY_DROPDOWN}`),
   categoryDropDownName: document.querySelector('.sweets-category-name'),

@@ -1,0 +1,108 @@
+.popular-products-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.popular-products-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.popular-products-title {
+  text-align: center;
+}
+
+.popular-products-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.popular-products-slider.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.popular-products-list.swiper-wrapper {
+  align-items: stretch;
+}
+
+.popular-products-item.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: stretch;
+  height: auto;
+}
+
+.popular-products-item .sweets-item-content {
+  flex-grow: 1;
+}
+
+.popular-products-pagination-navigation-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.popular-products-pagination-navigation-wrapper.hidden {
+  display: none;
+}
+
+.popular-products-navigation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.popular-products-navigation .slider-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+.popular-products-navigation .swiper-button-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.popular-products-pagination {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 8px;
+}
+
+.popular-products-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+/*  margin: 0 4px !important;*/
+  border-radius: 50%;
+  background-color: var(--color-neutral-lighter);
+  opacity: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-100);
+}
+
+.popular-products-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-scheme-1-text);
+}
+
+@media screen and (min-width: 1440px) {
+  .popular-products-container {
+    gap: 48px;
+  }
+}
