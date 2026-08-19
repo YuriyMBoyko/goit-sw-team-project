@@ -6,9 +6,8 @@ import 'swiper/css/pagination';
 import 'css-star-rating/css/star-rating.css';
 import { STRINGS } from './consts.js';
 import { showLoader, hideLoader, showError } from './helpers.js';
-import { buildStarRatingMarkup } from './feedback-stars.js';
 import { fetchFeedbacks } from './api.js';
-/*import { fetchFeedbacks } from './feedback-data.js';*/
+import { buildStarRatingMarkup } from './feedback-stars.js';
 
 const refs = {
   feedbackContainer: document.querySelector('.feedback-data-container'),
@@ -113,10 +112,6 @@ function initFeedbackSwiper() {
       el: '.feedback-swiper-pagination',
       type: 'bullets',
       clickable: true,
-/*      
-      dynamicBullets: true,
-      dynamicMainBullets: 6,
-*/      
     },
 
     keyboard: {

@@ -3,6 +3,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 import Swal from 'sweetalert2';
 import { CSS_CLASSES, STRINGS } from './consts.js';
 
+export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export function toggleElementVisible(selectorOrElement) {
   const element = getElement(selectorOrElement);
 
@@ -56,15 +58,7 @@ export function showError(message, isHtml = false) {
     messageHtml: isHtml,
   });
 }
-/*
-export function showOrderError(message) {
-  Swal.fire({
-    icon: 'error',
-    title: 'Помилка',
-    text: message,
-  });
-}
-*/
+
 export function showOrderSuccess(orderNum) {
   Swal.fire({
     icon: 'success',

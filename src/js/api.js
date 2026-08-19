@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sleep } from './helpers.js';
 
 const ApiBaseURL = 'https://deserts-store.b.goit.study/api';
 const ApiMethods = [
@@ -11,11 +12,15 @@ const ApiMethods = [
 axios.defaults.baseURL = ApiBaseURL;
 
 export async function fetchCategories() {
+   await sleepToTest();
+
   const response = await axios.get(ApiMethods[0]);
   return response.data;
 }
 
 export async function fetchDessertsByCategory(category, page = 1, limit = 10) {
+  await sleepToTest();
+
   const parameters = {
     params: {
       page: page,
@@ -36,6 +41,8 @@ export async function fetchDessert(id) {
 }
 
 export async function fetchFeedbacks(page = 1, limit = 10) {
+  await sleepToTest();
+
   const parameters = {
     params: {
       page: page,
@@ -60,6 +67,8 @@ export async function postOrder({ name, phone, dessertId, comment }) {
 }
 
 export async function getPopularDesserts(page = 1, limit = 10) {
+  await sleepToTest();
+
   const parameters = {
     params: {
       page: page,
@@ -70,4 +79,8 @@ export async function getPopularDesserts(page = 1, limit = 10) {
 
   const response = await axios.get(ApiMethods[1], parameters);
   return response.data;
+}
+
+async function sleepToTest() {
+  await sleep(500);
 }

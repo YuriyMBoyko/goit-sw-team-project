@@ -4,11 +4,10 @@ import { setElementVisible } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
 import { showLoader, hideLoader, showError } from '../helpers.js';
-/*import { fetchDessertsByCategory } from './desserts-data.js';*/
 import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadDessertsByCategory();
+  hideLoadMoreButton();
 
   refs.loadMoreButton.addEventListener('click', handleLoadMoreButtonClick);
   refs.productList.addEventListener('click', handleProductClick);
@@ -43,8 +42,8 @@ export async function loadDessertsByCategory(category = '', page = 1) {
       }
 
     } finally {
+      hideLoader(refs.productLoader);
       state.loading = false;
-      hideLoader(refs.producLoader);
     }
   }
 }
@@ -179,7 +178,6 @@ function handleProductClick(event) {
   clicked = clicked.closest(`.${CLASS_NAMES.PRODUCT_OPEN_DETAIL}`);
   if (!clicked) return
 
-  console.log(clicked);
   const productId = clicked.dataset.id;
   openProductModal(productId);
 }

@@ -1,6 +1,6 @@
 <div class="backdrop" id="product-modal-backdrop" hidden>
   
-  <article class="modal-card">
+  <article class="modal-card" style="position: relative;">
     
     <div class="modal-image-thumb">
       <button class="modal-close-btn" id="close-modal-btn" type="button" aria-label="Закрити вікно">
@@ -18,7 +18,7 @@
         <div class="modal-price"><span id="modal-price"></span> грн</div>
       </div>
       
-      <div class="modal-rating" id="modal-rating" aria-label="Рейтинг товару"></div>
+      <div class="modal-rating" id="modal-rating"></div>
 
       <p class="modal-description" id="modal-description"></p>
       
@@ -29,6 +29,10 @@
       <button class="button-primary modal-action-btn" id="order-button" type="button">Перейти до замовлення</button>
     </div>
     
+    <div class="loader-overlay" id="product-modal-loader">
+      <span class="loader"></span>
+    </div>
+
   </article>
 
 </div>

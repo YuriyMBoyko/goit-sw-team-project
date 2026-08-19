@@ -1,6 +1,6 @@
 import { fetchDessert } from '../api.js';
 import { openOrderModal } from '../order-modal.js';
-import { showError } from '../helpers.js';
+import { showError, showLoader, hideLoader } from '../helpers.js';
 import { STRINGS } from '../consts.js';
 
 let backdrop, closeBtn, orderBtn;
@@ -25,10 +25,16 @@ function generateStars(rating) {
 export async function openProductModal(productId) {
   currentProductId = productId;
   
+  backdrop = document.getElementById('product-modal-backdrop');
+  if (backdrop) backdrop.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden'; 
+/*
+  const modalLoader = document.getElementById('product-modal-loader');
+  if (modalLoader) showLoader(modalLoader);
+*/  
   try {
     const productData = await fetchDessert(productId);
 
-    backdrop = document.getElementById('product-modal-backdrop');
     closeBtn = document.getElementById('close-modal-btn');
     orderBtn = document.getElementById('order-button');
 
@@ -56,12 +62,15 @@ export async function openProductModal(productId) {
     document.addEventListener('keydown', handleEscapeKey);
     orderBtn.addEventListener('click', handleOrderClick);
 
-    backdrop.removeAttribute('hidden');
-    document.body.style.overflow = 'hidden'; 
-
   } catch (error) {
     console.error('Помилка відкриття модалки:', error);
     showError(`${STRINGS.ERROR_LOAD_DESSERT}<br/><br/>${error}`)
+    if (backdrop) {
+      backdrop.setAttribute('hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  } finally {
+/*    if (modalLoader) hideLoader(modalLoader);*/
   }
 }
 

@@ -1,4 +1,4 @@
-import spriteUrl from 'css-star-rating/images/star-rating.icons.svg';
+import spriteUrl from '../img/icons.svg';
 
 export function buildStarRatingMarkup(rate) {
 

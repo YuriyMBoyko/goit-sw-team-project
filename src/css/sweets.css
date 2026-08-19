@@ -14,6 +14,9 @@
 
 .sweets-category-dropdown-container {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
   width: 100%;
 }
@@ -44,6 +47,7 @@
 }
 
 .sweets-category-name {
+  display: block;
   position: relative;
   font-family: var(--font-family);
   font-weight: 400;

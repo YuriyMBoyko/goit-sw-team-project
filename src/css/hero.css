@@ -11,7 +11,7 @@
   padding-top: 155.5px;
   padding-bottom: 155.5px;
   background-repeat: no-repeat;
-  background-size: auto; /* cover; */
+  background-size: cover;
   background-position: center;
   background-image:
     linear-gradient(var(--opacity-black-50), var(--opacity-black-50)),

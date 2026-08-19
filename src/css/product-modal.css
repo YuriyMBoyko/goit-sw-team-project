@@ -12,6 +12,8 @@
   padding: 16px;
   opacity: 1;
   visibility: visible;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
   transition: 
     opacity var(--transition-300), 
     visibility var(--transition-300);
@@ -30,7 +32,8 @@
   max-width: 335px;
   max-height: 90vh;
   overflow-y: auto;
-  background-color: #f8fcfb;
+  overflow-x: hidden;
+  background-color: var(--color-scheme-1-background);
   border-radius: 20px;
   position: relative;
   padding: 64px 20px;
@@ -43,19 +46,6 @@
 
 .backdrop[hidden] .modal-card {
   transform: scale(0.8);
-}
-
-.modal-card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-card::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.modal-card::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
 }
 
 .modal-close-btn {
