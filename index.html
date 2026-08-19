@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <script type="module" crossorigin src="/goit-sw-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-sw-team-project/assets/vendor-E_A9zYq_.js">
     <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/vendor-BSfqrMAl.css">
-    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-D8rjH7bt.css">
+    <link rel="stylesheet" crossorigin href="/goit-sw-team-project/assets/index-CwcFVojp.css">
   </head>
   <body>
     <header class="header">
@@ -57,6 +57,47 @@
         </p>
       </div>
       <a href="#feedback" class="button-primary hero-button">Що про нас думають</a>
+    </div>
+  </div>
+</section>
+
+      <section class="popular-products" id="popular-products">
+  <div class="container popular-products-container">
+    <div class="popular-products-title-wrapper">
+      <h2 class="popular-products-title">Наші бестселлери</h2>
+    </div>
+    <div class="popular-products-slider-wrapper">
+      <div class="popular-products-slider swiper">
+        <ul class="swiper-wrapper popular-products-list"></ul>
+      </div>
+      <div class="popular-products-pagination-navigation-wrapper hidden">
+        <div class="popular-products-pagination"></div>
+        <div class="popular-products-navigation">
+          <button
+            class="slider-arrow popular-products-button-prev"
+            type="button"
+            aria-label="Попередні популярні товари"
+          >
+            <svg aria-hidden="true">
+              <use href="/goit-sw-team-project/assets/icons-DEqZ9lXs.svg#arrow-back"></use>
+            </svg>
+          </button>
+
+          <button
+            class="slider-arrow popular-products-button-next"
+            type="button"
+            aria-label="Наступні популярні товари"
+          >
+            <svg aria-hidden="true">
+              <use href="/goit-sw-team-project/assets/icons-DEqZ9lXs.svg#arrow-forward"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="loader-overlay popular-products-loader-container">
+        <span class="loader"></span>
+      </div>
     </div>
   </div>
 </section>
