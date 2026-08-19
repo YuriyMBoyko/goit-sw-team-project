@@ -85,11 +85,14 @@
   align-items: center;
   min-height: 8px;
 }
-
+/*
+.popular-products-pagination {
+  transform: translateX(0%);
+}
+*/
 .popular-products-pagination .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-/*  margin: 0 4px !important;*/
   border-radius: 50%;
   background-color: var(--color-neutral-lighter);
   opacity: 1;
