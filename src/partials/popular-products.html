@@ -3,35 +3,38 @@
     <div class="popular-products-title-wrapper">
       <h2 class="popular-products-title">Наші бестселлери</h2>
     </div>
-
     <div class="popular-products-slider-wrapper">
       <div class="popular-products-slider swiper">
         <ul class="swiper-wrapper popular-products-list"></ul>
       </div>
+      <div class="popular-products-pagination-navigation-wrapper hidden">
+        <div class="popular-products-pagination"></div>
+        <div class="popular-products-navigation">
+          <button
+            class="slider-arrow popular-products-button-prev"
+            type="button"
+            aria-label="Попередні популярні товари"
+          >
+            <svg aria-hidden="true">
+              <use href="./img/icons.svg#arrow-back"></use>
+            </svg>
+          </button>
 
-      <div class="popular-products-navigation">
-        <button
-          class="slider-arrow popular-products-button-prev"
-          type="button"
-          aria-label="Попередні популярні товари"
-        >
-          <svg aria-hidden="true">
-            <use href="./img/icons.svg#arrow-back"></use>
-          </svg>
-        </button>
+          <button
+            class="slider-arrow popular-products-button-next"
+            type="button"
+            aria-label="Наступні популярні товари"
+          >
+            <svg aria-hidden="true">
+              <use href="./img/icons.svg#arrow-forward"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
 
-        <button
-          class="slider-arrow popular-products-button-next"
-          type="button"
-          aria-label="Наступні популярні товари"
-        >
-          <svg aria-hidden="true">
-            <use href="./img/icons.svg#arrow-forward"></use>
-          </svg>
-        </button>
+      <div class="loader-overlay popular-products-loader-container">
+        <span class="loader"></span>
       </div>
     </div>
-
-    <div class="popular-products-pagination"></div>
   </div>
 </section>

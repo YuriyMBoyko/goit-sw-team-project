@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initFeedbacks(lazyLoad = true) {
-  if (!lazyLoad || (!'IntersectionObserver' in window)) {
+  if (!lazyLoad || !refs.feedbackContainer || (!'IntersectionObserver' in window)) {
     loadFeedbacks();
 
     initFeedbackSwiper();

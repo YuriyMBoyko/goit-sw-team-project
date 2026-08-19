@@ -7,7 +7,7 @@ import { fetchCategories } from '../api.js';
 document.addEventListener('DOMContentLoaded', () => {
   if (!refs.categoryList) return;
 
-  loadCategories();
+  initCategories();
 
   refs.categoryList.addEventListener('click', handleCategoryClick);
   refs.categoryDropDown.addEventListener('click', handleCategoryDropdownClick);
@@ -15,6 +15,25 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', onDocumentClick);
   document.addEventListener('keydown', onDocumentKeydown);
 });
+
+function initCategories(lazyLoad = true) {
+  if (!lazyLoad || !refs.sweetsContainer || (!'IntersectionObserver' in window)) {
+    loadCategories();
+  } else {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => { initCategories(false); }, 100);
+          observer.unobserve(entry.target);
+        }
+      })
+    }, {
+      rootMargin: '20px',
+    });
+
+    observer.observe(refs.sweetsContainer);
+  }
+}
 
 async function loadCategories() {
   if (state.loading) {
