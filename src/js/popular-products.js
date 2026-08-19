@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { getPopularDesserts } from './api.js';
-import { showLoader, hideLoader, showError, toggleElementVisible } from './helpers.js';
+import { showLoader, hideLoader, showError, toggleElementVisibility } from './helpers.js';
 import { STRINGS } from './consts.js';
 import { openProductModal } from './sweets/product-modal.js';
 import { createDessertsMarkup } from './sweets/desserts.js';
@@ -30,6 +30,7 @@ function initPopularProducts() {
 }
 
 async function loadPopularProducts() {
+  let isLoaded = true;
   try {
     showLoader(refs.popularProductsLoader);
     const data = await getPopularDesserts(1, 10);
@@ -56,9 +57,10 @@ async function loadPopularProducts() {
       }`,
       true
     );
+    isLoaded = false;
   } finally {
     hideLoader(refs.popularProductsLoader);
-    toggleElementVisible('.popular-products-pagination-navigation-wrapper', true);
+    toggleElementVisibility('.popular-products-pagination-navigation-wrapper', isLoaded);
   }
 }
 
@@ -97,10 +99,10 @@ function initPopularSwiper() {
       el: '.popular-products-pagination',
       type: 'bullets',
       clickable: true,
-/*
-      dynamicBullets: true,
-      dynamicMainBullets: 3,
-*/      
+
+/*      dynamicBullets: true,*/
+/*      dynamicMainBullets: 3,*/
+      
     },
 
     keyboard: {

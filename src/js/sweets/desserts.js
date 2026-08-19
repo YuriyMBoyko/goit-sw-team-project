@@ -1,6 +1,6 @@
 import spriteUrl from '../../img/icons.svg';
 import { CLASS_NAMES, ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
-import { setElementVisible } from '../helpers.js';
+import { toggleElementVisibility } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
 import { showLoader, hideLoader, showError } from '../helpers.js';
@@ -161,13 +161,13 @@ async function handleLoadMoreButtonClick(event) {
 
 function hideLoadMoreButton() {
   if (refs.loadMoreButton) {
-    setElementVisible(refs.loadMoreButton, false);
+    toggleElementVisibility(refs.loadMoreButton, false);
   }
 }
 
 function showLoadMoreButton() {
   if (refs.loadMoreButton) {
-    setElementVisible(refs.loadMoreButton, true);
+    toggleElementVisibility(refs.loadMoreButton, true);
   }
 }
 

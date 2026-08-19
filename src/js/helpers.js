@@ -5,22 +5,14 @@ import { CSS_CLASSES, STRINGS } from './consts.js';
 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export function toggleElementVisible(selectorOrElement) {
+export function toggleElementVisibility(selectorOrElement, force) {
   const element = getElement(selectorOrElement);
 
   if (element) {
-    element.classList.toggle('hidden');
-  }
-}
-
-export function setElementVisible(selectorOrElement, visible) {
-  const element = getElement(selectorOrElement);
-
-  if (element) {
-    if (visible) {
-      element.classList.remove('hidden');
+    if (force === undefined) {
+      element.classList.toggle(CSS_CLASSES.HIDDEN);
     } else {
-      element.classList.add('hidden');
+      element.classList.toggle(CSS_CLASSES.HIDDEN, !force);
     }
   }
 }
