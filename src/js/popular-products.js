@@ -119,6 +119,7 @@ function handleProductClick(event) {
   );
 
   if (!button) return;
-
+  button.blur();
+  
   openProductModal(button.dataset.id);
 }

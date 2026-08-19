@@ -34,7 +34,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   background-color: var(--color-scheme-1-background);
-  border-radius: 20px;
+  border-radius: 16px;
   position: relative;
   padding: 64px 20px;
   display: flex;

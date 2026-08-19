@@ -3,7 +3,7 @@ import { CLASS_NAMES, ITEMS_PER_PAGE, refs, state } from './sweets-consts.js';
 import { toggleElementVisibility } from '../helpers.js';
 import { openOrderModal } from '../order-modal.js';
 import { fetchDessertsByCategory } from '../api.js';
-import { showLoader, hideLoader, showError } from '../helpers.js';
+import {showOrderSuccess, showLoader, hideLoader, showError } from '../helpers.js';
 import { openProductModal } from './product-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -178,6 +178,7 @@ function handleProductClick(event) {
   clicked = clicked.closest(`.${CLASS_NAMES.PRODUCT_OPEN_DETAIL}`);
   if (!clicked) return
 
+  clicked.blur();
   const productId = clicked.dataset.id;
   openProductModal(productId);
 }
